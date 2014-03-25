@@ -112,7 +112,7 @@ void CDspView::OnFanbai()
 	// TODO: Add your command handler code here
 	CDspDoc * pDoc = GetDocument();
 	if(pDoc->m_pDib != NULL){
-		pDoc->m_pDib->Fanbai();
+		pDoc->m_pDib->Inverse();
 		pDoc->UpdateAllViews(NULL);
 	}
 	

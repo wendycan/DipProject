@@ -32,22 +32,12 @@ public:
 	long m_nHeight;
 	long m_nPaletteEntries;
 	long m_nDibSize;
-    long *m_pGreyScale;
-	float *m_pEquilibration;
-
+	long m_length;
 
 public:
-	long m_length;
-	void Fanbai();
+	void Inverse();
 	void LoadFile(const char*);
-	void chuang();
-	void SaveFile(const char* FileName);
-	void FileOpen(const char*);
 	void Draw(CDC *);
-	void GreyScale();
-	void Equilibration();
-	void LaplacianEnhanced();
-    void New();
 };
 
 

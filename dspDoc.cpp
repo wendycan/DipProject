@@ -70,7 +70,7 @@ BOOL CDspDoc::OnOpenDocument(LPCTSTR lpszPathName)
 	m_pDib= new CDib;
 	if (m_pDib!=NULL)
 	{
-		m_pDib->FileOpen(lpszPathName);
+		m_pDib->LoadFile(lpszPathName);
 
 	//	m_pDib->chuang();
 
