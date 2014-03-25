@@ -62,12 +62,12 @@ void CDib::LoadFile( const char* pFileName)
 	m_nWidth = m_pBitmapInfoHeader->biWidth;
 	m_nHeight = m_pBitmapInfoHeader->biHeight;
 	m_length = m_nWidth * m_nHeight;
+	long hi = sizeof(BITMAPINFOHEADER);
 	m_pPaletteEntry = (PALETTEENTRY *)(m_pDib+sizeof(BITMAPINFOHEADER));
 	if (m_pBitmapInfoHeader->biBitCount>8)
 	{
 		m_nPaletteEntries = 0;
-		m_length *= (m_pBitmapInfoHeader->biBitCount)/8;
-
+		m_length *= (m_pBitmapInfoHeader->biBitCount)/8;  //To calculate bmp size by multiply by bitcount
 	}else
 	{
 	m_nPaletteEntries = 1<<m_pBitmapInfoHeader->biBitCount;
@@ -93,7 +93,21 @@ void CDib::Inverse()
 	AfxMessageBox("No object is opened",MB_OK);
     return;   	
 	}
-	for(int i=0;i<m_length;i++){
-		m_pDibBits[i] = 255 - m_pDibBits[i];// OR use point: *(m_pDibBits+i)=255-*(m_pDibBits+i);
+	for(int i=0;i<m_nPaletteEntries;i++){  //not m_nDibSize
+		m_pPaletteEntry[i].peBlue=255-m_pPaletteEntry[i].peBlue;
+		m_pPaletteEntry[i].peGreen=255-m_pPaletteEntry[i].peGreen;
+		m_pPaletteEntry[i].peRed=255-m_pPaletteEntry[i].peRed;
+	//	m_pDibBits[i] = 255 - m_pDibBits[i];// OR use point: *(m_pDibBits+i)=255-*(m_pDibBits+i);
+	}
+}
+
+void CDib::RemoveRed()
+{
+	if(m_nDibSize == NULL){
+		AfxMessageBox("No object is opened",MB_OK);
+		return; 
+	}
+	for(int i=0;i<m_nPaletteEntries;i++){
+		m_pPaletteEntry[i].peBlue=0;
 	}
 }

@@ -172,6 +172,7 @@ BEGIN
     POPUP "Í¼Ïñ²Ù×÷"
     BEGIN
         MENUITEM "·´°×",                        ID_FANBAI
+        MENUITEM "È¥ºì",                        ID_REMOVERED
     END
 END
 

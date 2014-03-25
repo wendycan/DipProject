@@ -2,7 +2,7 @@
 
 [General Info]
 Version=1
-LastClass=CDspDoc
+LastClass=CDspView
 LastTemplate=CDialog
 NewFileInclude1=#include "stdafx.h"
 NewFileInclude2=#include "dsp.h"
@@ -41,7 +41,7 @@ ImplementationFile=dspView.cpp
 Filter=C
 BaseClass=CView
 VirtualFilter=VWC
-LastObject=ID_FANBAI
+LastObject=ID_REMOVERED
 
 
 [CLS:CMainFrame]
@@ -124,7 +124,8 @@ Command19=ID_WINDOW_TILE_HORZ
 Command20=ID_WINDOW_ARRANGE
 Command21=ID_APP_ABOUT
 Command22=ID_FANBAI
-CommandCount=22
+Command23=ID_REMOVERED
+CommandCount=23
 
 [ACL:IDR_MAINFRAME]
 Type=1

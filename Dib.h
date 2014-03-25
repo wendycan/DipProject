@@ -35,6 +35,7 @@ public:
 	long m_length;
 
 public:
+	void RemoveRed();
 	void Inverse();
 	void LoadFile(const char*);
 	void Draw(CDC *);

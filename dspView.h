@@ -49,6 +49,7 @@ protected:
 protected:
 	//{{AFX_MSG(CDspView)
 	afx_msg void OnFanbai();
+	afx_msg void OnRemovered();
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };

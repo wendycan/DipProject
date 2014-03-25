@@ -22,6 +22,7 @@ IMPLEMENT_DYNCREATE(CDspView, CView)
 BEGIN_MESSAGE_MAP(CDspView, CView)
 	//{{AFX_MSG_MAP(CDspView)
 	ON_COMMAND(ID_FANBAI, OnFanbai)
+	ON_COMMAND(ID_REMOVERED, OnRemovered)
 	//}}AFX_MSG_MAP
 	// Standard printing commands
 	ON_COMMAND(ID_FILE_PRINT, CView::OnFilePrint)
@@ -113,6 +114,18 @@ void CDspView::OnFanbai()
 	CDspDoc * pDoc = GetDocument();
 	if(pDoc->m_pDib != NULL){
 		pDoc->m_pDib->Inverse();
+		pDoc->UpdateAllViews(NULL);
+	}
+	
+}
+
+void CDspView::OnRemovered() 
+{
+	// TODO: Add your command handler code here
+	CDspDoc * pDoc = GetDocument();
+	if (pDoc->m_pDib != NULL)
+	{
+		pDoc->m_pDib->RemoveRed();
 		pDoc->UpdateAllViews(NULL);
 	}
 	
