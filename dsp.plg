@@ -1,0 +1,42 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: dsp - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSP72F9.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /FR"Debug/" /Fp"Debug/dsp.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\xinHomeWork\dsp\dspDoc.cpp"
+]
+Creating command line "cl.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSP72F9.tmp" 
+Creating temporary file "C:\Users\ADMINI~1\AppData\Local\Temp\RSP7309.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/dsp.pdb" /debug /machine:I386 /out:"Debug/dsp.exe" /pdbtype:sept 
+.\Debug\ChildFrm.obj
+.\Debug\Dib.obj
+.\Debug\dsp.obj
+.\Debug\dspDoc.obj
+.\Debug\dspView.obj
+.\Debug\MainFrm.obj
+.\Debug\StdAfx.obj
+.\Debug\dsp.res
+]
+Creating command line "link.exe @C:\Users\ADMINI~1\AppData\Local\Temp\RSP7309.tmp"
+<h3>Output Window</h3>
+Compiling...
+dspDoc.cpp
+Linking...
+Creating command line "bscmake.exe /nologo /o"Debug/dsp.bsc"  .\Debug\StdAfx.sbr .\Debug\ChildFrm.sbr .\Debug\Dib.sbr .\Debug\dsp.sbr .\Debug\dspDoc.sbr .\Debug\dspView.sbr .\Debug\MainFrm.sbr"
+Creating browse info file...
+<h3>Output Window</h3>
+
+
+
+<h3>Results</h3>
+dsp.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>
