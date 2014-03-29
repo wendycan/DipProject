@@ -22,6 +22,7 @@ CDib::CDib()
 	m_pDib=NULL;
 	m_pDibBits=NULL;
     pRawData=NULL;
+	m_pGrayScale = NULL;
 
 }
 
@@ -36,6 +37,10 @@ CDib::~CDib()
 	{
         delete[] pRawData;
         pRawData=NULL;
+	}
+	if (m_pGrayScale != NULL)
+	{
+	 delete []m_pGrayScale;
 	}
 }
 void CDib::LoadFile( const char* pFileName)
@@ -109,5 +114,22 @@ void CDib::RemoveRed()
 	}
 	for(int i=0;i<m_nPaletteEntries;i++){
 		m_pPaletteEntry[i].peBlue=0;
+	}
+}
+
+void CDib::GrayScale()
+{
+	if(m_pGrayScale != NULL){
+		delete []m_pGrayScale;
+		m_pGrayScale = NULL;
+	}
+	m_pGrayScale = new long [m_nPaletteEntries];
+	memset(m_pGrayScale,0,m_nPaletteEntries*sizeof(long));
+	for (int i=0;i<m_nHeight;i++)
+	{
+		for(int j=0;j<m_nWidth;j++)
+		{
+			m_pGrayScale[*(m_pDibBits+i*m_nWidth+j)]++;
+		}
 	}
 }

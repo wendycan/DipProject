@@ -8,6 +8,8 @@
 #include "dspView.h"
 #include "Dib.h"
 
+#include "DlgHistogram.h"
+
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #undef THIS_FILE
@@ -23,6 +25,7 @@ BEGIN_MESSAGE_MAP(CDspView, CView)
 	//{{AFX_MSG_MAP(CDspView)
 	ON_COMMAND(ID_FANBAI, OnFanbai)
 	ON_COMMAND(ID_REMOVERED, OnRemovered)
+	ON_COMMAND(ID_MENU_Histogram, OnMENUHistogram)
 	//}}AFX_MSG_MAP
 	// Standard printing commands
 	ON_COMMAND(ID_FILE_PRINT, CView::OnFilePrint)
@@ -127,6 +130,17 @@ void CDspView::OnRemovered()
 	{
 		pDoc->m_pDib->RemoveRed();
 		pDoc->UpdateAllViews(NULL);
+	}
+	
+}
+
+void CDspView::OnMENUHistogram() 
+{
+	// TODO: Add your command handler code here
+	CDspDoc* pDoc = GetDocument();
+	if(pDoc->m_pDib != NULL){
+		CDlgHistogram DlgHist(pDoc->m_pDib);
+		DlgHist.DoModal();
 	}
 	
 }

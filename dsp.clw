@@ -14,12 +14,13 @@ Class2=CDspDoc
 Class3=CDspView
 Class4=CMainFrame
 
-ResourceCount=3
+ResourceCount=4
 Resource1=IDR_DSPTYPE
 Resource2=IDR_MAINFRAME
 Class5=CChildFrame
 Class6=CAboutDlg
 Resource3=IDD_ABOUTBOX
+Resource4=IDD_DLG_HISTOGRAM
 
 [CLS:CDspApp]
 Type=0
@@ -41,7 +42,7 @@ ImplementationFile=dspView.cpp
 Filter=C
 BaseClass=CView
 VirtualFilter=VWC
-LastObject=ID_REMOVERED
+LastObject=ID_MENU_Histogram
 
 
 [CLS:CMainFrame]
@@ -125,7 +126,8 @@ Command20=ID_WINDOW_ARRANGE
 Command21=ID_APP_ABOUT
 Command22=ID_FANBAI
 Command23=ID_REMOVERED
-CommandCount=23
+Command24=ID_MENU_Histogram
+CommandCount=24
 
 [ACL:IDR_MAINFRAME]
 Type=1
@@ -145,4 +147,12 @@ Command12=ID_EDIT_PASTE
 Command13=ID_NEXT_PANE
 Command14=ID_PREV_PANE
 CommandCount=14
+
+[DLG:IDD_DLG_HISTOGRAM]
+Type=1
+Class=?
+ControlCount=3
+Control1=IDOK,button,1342242817
+Control2=IDCANCEL,button,1342242816
+Control3=IDC_STATIC_HISTOGRAM,static,1342308352
 

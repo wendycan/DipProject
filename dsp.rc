@@ -173,6 +173,7 @@ BEGIN
     BEGIN
         MENUITEM "反白",                        ID_FANBAI
         MENUITEM "去红",                        ID_REMOVERED
+        MENUITEM "直方图",                      ID_MENU_Histogram
     END
 END
 
@@ -215,6 +216,16 @@ BEGIN
     LTEXT           "dsp 1.0 版",IDC_STATIC,40,10,119,8,SS_NOPREFIX
     LTEXT           "版权所有 (C) 2014",IDC_STATIC,40,25,119,8
     DEFPUSHBUTTON   "确定",IDOK,178,7,50,14,WS_GROUP
+END
+
+IDD_DLG_HISTOGRAM DIALOG DISCARDABLE  0, 0, 368, 220
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "直方图"
+FONT 10, "System"
+BEGIN
+    DEFPUSHBUTTON   "确定",IDOK,311,7,50,14
+    PUSHBUTTON      "取消",IDCANCEL,311,24,50,14
+    LTEXT           "",IDC_STATIC_HISTOGRAM,50,27,249,141
 END
 
 
@@ -278,6 +289,14 @@ BEGIN
         RIGHTMARGIN, 228
         TOPMARGIN, 7
         BOTTOMMARGIN, 48
+    END
+
+    IDD_DLG_HISTOGRAM, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 361
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 213
     END
 END
 #endif    // APSTUDIO_INVOKED

@@ -35,6 +35,8 @@ public:
 	long m_length;
 
 public:
+	void GrayScale();
+	long * m_pGrayScale;
 	void RemoveRed();
 	void Inverse();
 	void LoadFile(const char*);
