@@ -53,6 +53,7 @@ protected:
 	afx_msg void OnMENUHistogram();
 	afx_msg void OnHistogramEqu();
 	afx_msg void OnSmooth();
+	afx_msg void OnLaplaceEnhanced();
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };

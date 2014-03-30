@@ -35,6 +35,7 @@ public:
 	long m_length;
 
 public:
+	void LaplaceEnhanced();
 	void Smooth();
 	void HistogramEqu();
 	void GrayScale();

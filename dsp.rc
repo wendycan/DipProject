@@ -176,6 +176,7 @@ BEGIN
         MENUITEM "直方图",                      ID_MENU_Histogram
         MENUITEM "直方图均衡",                  ID_HISTOGRAM_EQU
         MENUITEM "平滑",                        ID_SMOOTH
+        MENUITEM "拉普拉斯增强",                ID_LAPLACEENHANCED
     END
 END
 
