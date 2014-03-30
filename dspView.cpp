@@ -27,6 +27,7 @@ BEGIN_MESSAGE_MAP(CDspView, CView)
 	ON_COMMAND(ID_REMOVERED, OnRemovered)
 	ON_COMMAND(ID_MENU_Histogram, OnMENUHistogram)
 	ON_COMMAND(ID_HISTOGRAM_EQU, OnHistogramEqu)
+	ON_COMMAND(ID_SMOOTH, OnSmooth)
 	//}}AFX_MSG_MAP
 	// Standard printing commands
 	ON_COMMAND(ID_FILE_PRINT, CView::OnFilePrint)
@@ -156,5 +157,18 @@ void CDspView::OnHistogramEqu()
 		return;
 	}
 	pDoc->m_pDib->HistogramEqu();	
+	pDoc->UpdateAllViews(NULL);
+}
+
+void CDspView::OnSmooth() 
+{
+	// TODO: Add your command handler code here
+	CDspDoc* pDoc = GetDocument();
+	if	(pDoc->m_pDib->m_pDibData==NULL)
+	{
+		AfxMessageBox("No picture",MB_OK);
+		return;
+	}
+	pDoc->m_pDib->Smooth();	
 	pDoc->UpdateAllViews(NULL);
 }

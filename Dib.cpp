@@ -163,3 +163,37 @@ void CDib::HistogramEqu()
 	}
 
 }
+
+void CDib::Smooth()
+{
+	FLOAT *s= new FLOAT[m_nDibSize];
+		for (int i=0;i<m_nDibSize;i++)
+	{
+		s[i]=0;
+	}
+	for ( i=1;i<m_nHeight-1;i++)
+	{		
+		int  i_1=i-1, i_2=i+1;
+		for (int j=1;j<m_nWidth-1;j++){
+			int j_1=j-1, j_2=j+1;
+			s[i*m_nWidth+j]=(m_pDibBits[i_1*m_nWidth+j_1]+m_pDibBits[i_1*m_nWidth+j]+m_pDibBits[i_1*m_nWidth+j_2]
+				+m_pDibBits[i*m_nWidth+j_1]+m_pDibBits[i*m_nWidth+j]+m_pDibBits[i*m_nWidth+j_2]+
+				m_pDibBits[i_2*m_nWidth+j_1]+m_pDibBits[i_2*m_nWidth+j]+m_pDibBits[i_2*m_nWidth+j_2])/9.0;
+
+		}
+	}
+	for ( i=1;i<m_nHeight-1;i++)
+	{		
+		for (int j=1;j<m_nWidth-1;j++){
+			if(s[i*m_nWidth+j]>0&&s[i*m_nWidth+j]<255){
+				m_pDibBits[i*m_nWidth+j]=(int)s[i*m_nWidth+j];
+			}else{s[i*m_nWidth+j]>255?m_pDibBits[i*m_nWidth+j]=255:m_pDibBits[i*m_nWidth+j]=0;}
+
+		}
+	}
+	if (s!=NULL)
+	{
+		delete []s;
+		s=NULL;
+	}
+}

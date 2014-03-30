@@ -175,6 +175,7 @@ BEGIN
         MENUITEM "去红",                        ID_REMOVERED
         MENUITEM "直方图",                      ID_MENU_Histogram
         MENUITEM "直方图均衡",                  ID_HISTOGRAM_EQU
+        MENUITEM "平滑",                        ID_SMOOTH
     END
 END
 
