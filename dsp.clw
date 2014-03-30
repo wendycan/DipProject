@@ -16,10 +16,10 @@ Class4=CMainFrame
 
 ResourceCount=4
 Resource1=IDR_DSPTYPE
-Resource2=IDR_MAINFRAME
+Resource2=IDD_ABOUTBOX
 Class5=CChildFrame
 Class6=CAboutDlg
-Resource3=IDD_ABOUTBOX
+Resource3=IDR_MAINFRAME
 Resource4=IDD_DLG_HISTOGRAM
 
 [CLS:CDspApp]
