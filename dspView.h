@@ -51,6 +51,7 @@ protected:
 	afx_msg void OnFanbai();
 	afx_msg void OnRemovered();
 	afx_msg void OnMENUHistogram();
+	afx_msg void OnHistogramEqu();
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };

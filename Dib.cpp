@@ -133,3 +133,33 @@ void CDib::GrayScale()
 		}
 	}
 }
+
+void CDib::HistogramEqu()
+{
+	GrayScale();
+	FLOAT L=256;
+	long *s= new long[L];			
+	for (int i=0;i<L;i++)
+	{
+		s[i]=0;
+	}
+	FLOAT s_p=0;
+	for (i=0;i<L;i++)
+	{		
+		s_p=s_p+m_pGrayScale[i];
+		s[i]=(L-1)/(m_nHeight*m_nWidth)*s_p;
+	}
+
+	for (i=0;i<L;i++)
+	{		
+		m_pPaletteEntry[i].peBlue=(int)s[i];
+		m_pPaletteEntry[i].peRed=(int)s[i];
+		m_pPaletteEntry[i].peGreen=(int)s[i];
+	}
+	if (s!=NULL)
+	{
+		delete []s;
+		s=NULL;
+	}
+
+}
