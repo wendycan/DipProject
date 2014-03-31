@@ -301,7 +301,7 @@ void CDib::DrawCircle(int r)
 		}
     }
 }
-BOOL CDib::FFT(unsigned char* pDIBBits, long nWidth, long nHeight)
+BOOL CDib::FFT(unsigned char* pDIBBits, long nWidth, long nHeight, int m_nRadius)
 { 
 	unsigned char*	lpSrc;							// 指向源图像的指针
 	int y ;										// 循环控制变量
@@ -366,18 +366,18 @@ BOOL CDib::FFT(unsigned char* pDIBBits, long nWidth, long nHeight)
 // 	}	
 
 //	lowpass filter	
-// 	for (int k=0;k<nTransHeight;k++)
-// 	{
-// 		for (int l=0;l<nTransWidth;l++)
-// 		{
-// 			double Rtemp = (1.0*k- nTransHeight/2.0)*(1.0*k- nTransHeight/2.0) + ( 1.0*l-nTransWidth/2.0)*( 1.0*l-nTransWidth/2.0);
-// 			Rtemp = sqrt(Rtemp);
-// 			if (Rtemp <= m_nRadius)
-// 			{
-// 				pCFData[k*nTransWidth + l] =complex<double>(0,0);
-// 			}
-// 		}
-// 	}
+ 	for (int k=0;k<nTransHeight;k++)
+ 	{
+ 		for (int l=0;l<nTransWidth;l++)
+ 		{
+ 			double Rtemp = (1.0*k- nTransHeight/2.0)*(1.0*k- nTransHeight/2.0) + ( 1.0*l-nTransWidth/2.0)*( 1.0*l-nTransWidth/2.0);
+ 			Rtemp = sqrt(Rtemp);
+ 			if (Rtemp <= m_nRadius)
+ 			{
+				pCFData[k*nTransWidth + l] =complex<double>(0,0);
+ 			}
+ 		}
+ 	}
 	
 	IFFT_2D(pCFData, pCTData,nHeight, nWidth); 				// 图象进行反变换
 

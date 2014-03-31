@@ -57,7 +57,7 @@ protected:
 	afx_msg void OnLaplaceEnhanced();
 	afx_msg void OnFileNew();
 	afx_msg void OnNewRectangle();
-	afx_msg void OnFft2d();
+	afx_msg void OnFft();
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };
