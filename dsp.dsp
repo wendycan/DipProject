@@ -100,7 +100,7 @@ SOURCE=.\Dib.cpp
 # End Source File
 # Begin Source File
 
-SOURCE="D:\HomeWork\数字图像处理\DipProject\DlgHistogram.cpp"
+SOURCE=.\DlgHistogram.cpp
 # End Source File
 # Begin Source File
 
@@ -121,6 +121,10 @@ SOURCE=.\dspView.cpp
 # Begin Source File
 
 SOURCE=.\MainFrm.cpp
+# End Source File
+# Begin Source File
+
+SOURCE=.\Radius.cpp
 # End Source File
 # Begin Source File
 
@@ -145,6 +149,10 @@ SOURCE="D:\HomeWork\数字图像处理\DipProject\DlgHistogram.h"
 # End Source File
 # Begin Source File
 
+SOURCE=.\DlgHistogram.h
+# End Source File
+# Begin Source File
+
 SOURCE=.\dsp.h
 # End Source File
 # Begin Source File
@@ -158,6 +166,10 @@ SOURCE=.\dspView.h
 # Begin Source File
 
 SOURCE=.\MainFrm.h
+# End Source File
+# Begin Source File
+
+SOURCE=.\Radius.h
 # End Source File
 # Begin Source File
 
