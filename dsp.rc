@@ -183,6 +183,10 @@ BEGIN
         MENUITEM "新建矩形",                    ID_NEW_RECTANGLE
         MENUITEM "新建圆",                      ID_NEW_CIRCLE
     END
+    POPUP "傅里叶"
+    BEGIN
+        MENUITEM "傅里叶变换",                  ID_FFT
+    END
 END
 
 

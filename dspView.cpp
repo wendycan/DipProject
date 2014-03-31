@@ -32,6 +32,7 @@ BEGIN_MESSAGE_MAP(CDspView, CView)
 	ON_COMMAND(ID_FILE_NEW, OnFileNew)
 	ON_COMMAND(ID_NEW_RECTANGLE, OnNewRectangle)
 	ON_COMMAND(ID_NEW_CIRCLE, OnNewCircle)
+	ON_COMMAND(ID_FFT, OnFft2d)
 	//}}AFX_MSG_MAP
 	// Standard printing commands
 	ON_COMMAND(ID_FILE_PRINT, CView::OnFilePrint)
@@ -222,4 +223,10 @@ void CDspView::OnNewCircle()
 	Radius.DoModal();
 	pDoc->m_pDib->DrawCircle(Radius.m_radius);
 	pDoc->UpdateAllViews(NULL);
+}
+
+void CDspView::OnFft2d() 
+{
+	// TODO: Add your command handler code here
+	
 }

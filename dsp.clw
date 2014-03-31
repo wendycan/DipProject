@@ -2,7 +2,7 @@
 
 [General Info]
 Version=1
-LastClass=CRadius
+LastClass=CDspView
 LastTemplate=CDialog
 NewFileInclude1=#include "stdafx.h"
 NewFileInclude2=#include "dsp.h"
@@ -15,12 +15,12 @@ Class3=CDspView
 Class4=CMainFrame
 
 ResourceCount=5
-Resource1=IDD_ABOUTBOX
-Resource2=IDR_DSPTYPE
+Resource1=IDD_DLG_HISTOGRAM
+Resource2=IDD_ABOUTBOX
 Class5=CChildFrame
 Class6=CAboutDlg
-Resource3=IDR_MAINFRAME
-Resource4=IDD_DLG_HISTOGRAM
+Resource3=IDR_DSPTYPE
+Resource4=IDR_MAINFRAME
 Class7=CRadius
 Resource5=IDD_DIALOG1
 
@@ -44,7 +44,7 @@ ImplementationFile=dspView.cpp
 Filter=C
 BaseClass=CView
 VirtualFilter=VWC
-LastObject=CDspView
+LastObject=ID_FFT
 
 
 [CLS:CMainFrame]
@@ -134,7 +134,8 @@ Command26=ID_SMOOTH
 Command27=ID_LAPLACEENHANCED
 Command28=ID_NEW_RECTANGLE
 Command29=ID_NEW_CIRCLE
-CommandCount=29
+Command30=ID_FFT
+CommandCount=30
 
 [ACL:IDR_MAINFRAME]
 Type=1
