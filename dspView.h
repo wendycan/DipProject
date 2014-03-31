@@ -58,6 +58,7 @@ protected:
 	afx_msg void OnFileNew();
 	afx_msg void OnNewRectangle();
 	afx_msg void OnFft();
+	afx_msg void OnFreq();
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };

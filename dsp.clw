@@ -15,12 +15,12 @@ Class3=CDspView
 Class4=CMainFrame
 
 ResourceCount=5
-Resource1=IDR_MAINFRAME
+Resource1=IDD_ABOUTBOX
 Resource2=IDD_DLG_HISTOGRAM
 Class5=CChildFrame
 Class6=CAboutDlg
-Resource3=IDD_ABOUTBOX
-Resource4=IDR_DSPTYPE
+Resource3=IDR_DSPTYPE
+Resource4=IDR_MAINFRAME
 Class7=CRadius
 Resource5=IDD_DIALOG1
 
@@ -44,7 +44,7 @@ ImplementationFile=dspView.cpp
 Filter=C
 BaseClass=CView
 VirtualFilter=VWC
-LastObject=ID_FFT
+LastObject=ID_FREQ
 
 
 [CLS:CMainFrame]
@@ -135,7 +135,8 @@ Command27=ID_LAPLACEENHANCED
 Command28=ID_NEW_RECTANGLE
 Command29=ID_NEW_CIRCLE
 Command30=ID_FFT
-CommandCount=30
+Command31=ID_FREQ
+CommandCount=31
 
 [ACL:IDR_MAINFRAME]
 Type=1

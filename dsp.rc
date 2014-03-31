@@ -186,6 +186,7 @@ BEGIN
     POPUP "∏µ¿Ô“∂"
     BEGIN
         MENUITEM "∏µ¿Ô“∂±‰ªª",                  ID_FFT
+        MENUITEM "∆µ”Ú",                        ID_FREQ
     END
 END
 

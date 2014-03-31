@@ -348,53 +348,56 @@ BOOL CDib::FFT(unsigned char* pDIBBits, long nWidth, long nHeight, int m_nRadius
 		}
 	}
 	FFT_2D(pCTData, nWidth, nHeight, pCFData) ;					// 傅立叶正变换
-
-//  Forward FFT
-// 	for(y=0; y<nHeight; y++)						// 反变换的数据传给lpDIBBits
-// 	{
-// 		for(x=0; x<nWidth; x++)
-// 		{
-// 			dReal = pCTData[y*nTransWidth + x].real() ;
-// 			dImag = pCTData[y*nTransWidth + x].imag() ;
-// 			unchValue = sqrt(dImag*dImag+dReal*dReal)/100;
-// 			if(unchValue>255)unchValue=255;
-// 			
-// 			// 指向DIB第y行，第x个象素的指针
-// 			lpSrc = (unsigned char*)pDIBBits + nWidth *(nHeight-1-y) + x;
-// 			*lpSrc =unchValue ;
-// 		}
-// 	}	
-
-//	lowpass filter	
- 	for (int k=0;k<nTransHeight;k++)
- 	{
- 		for (int l=0;l<nTransWidth;l++)
- 		{
- 			double Rtemp = (1.0*k- nTransHeight/2.0)*(1.0*k- nTransHeight/2.0) + ( 1.0*l-nTransWidth/2.0)*( 1.0*l-nTransWidth/2.0);
- 			Rtemp = sqrt(Rtemp);
- 			if (Rtemp <= m_nRadius)
- 			{
-				pCFData[k*nTransWidth + l] =complex<double>(0,0);
- 			}
- 		}
- 	}
-	
-	IFFT_2D(pCFData, pCTData,nHeight, nWidth); 				// 图象进行反变换
-
-	for(y=0; y<nHeight; y++)								// 反变换的数据传给lpDIBBits
+	if (m_nRadius == FALSE)
 	{
-		for(x=0; x<nWidth; x++)
+		// Forward FFT
+		 for(y=0; y<nHeight; y++)						// 反变换的数据传给lpDIBBits
+		 {
+		 	for(x=0; x<nWidth; x++)
+		 	{
+		 		dReal = pCTData[y*nTransWidth + x].real() ;
+		 		dImag = pCTData[y*nTransWidth + x].imag() ;
+		 		unchValue = sqrt(dImag*dImag+dReal*dReal)/100;
+		 		if(unchValue>255)unchValue=255;
+		 			
+		 		// 指向DIB第y行，第x个象素的指针
+		 		lpSrc = (unsigned char*)pDIBBits + nWidth *(nHeight-1-y) + x;
+		 		*lpSrc =unchValue ;
+			}
+		}	
+	}
+
+	else{
+		//	lowpass filter	
+		for (int k=0;k<nTransHeight;k++)
 		{
-			//需要考虑信号的正负问题以及实际所用的图象数据是灰度值还是原始数据
-			dReal = pCTData[y*nTransWidth + x].real() ;		// 实部
-			dImag = pCTData[y*nTransWidth + x].imag() ;		// 虚部
-			unchValue = dReal*pow(-1,x+y);
-			// 指向DIB第y行，第x个象素的指针
-			lpSrc = (unsigned char*)pDIBBits + nWidth * (nHeight - 1 - y) + x;
-			*lpSrc =unchValue ;
+			for (int l=0;l<nTransWidth;l++)
+			{
+				double Rtemp = (1.0*k- nTransHeight/2.0)*(1.0*k- nTransHeight/2.0) + ( 1.0*l-nTransWidth/2.0)*( 1.0*l-nTransWidth/2.0);
+				Rtemp = sqrt(Rtemp);
+				if (Rtemp <= m_nRadius)
+				{
+					pCFData[k*nTransWidth + l] =complex<double>(0,0);
+				}
+			}
 		}
-	}	
-	
+		
+		IFFT_2D(pCFData, pCTData,nHeight, nWidth); 				// 图象进行反变换
+		
+		for(y=0; y<nHeight; y++)								// 反变换的数据传给lpDIBBits
+		{
+			for(x=0; x<nWidth; x++)
+			{
+				//需要考虑信号的正负问题以及实际所用的图象数据是灰度值还是原始数据
+				dReal = pCTData[y*nTransWidth + x].real() ;		// 实部
+				dImag = pCTData[y*nTransWidth + x].imag() ;		// 虚部
+				unchValue = dReal*pow(-1,x+y);
+				// 指向DIB第y行，第x个象素的指针
+				lpSrc = (unsigned char*)pDIBBits + nWidth * (nHeight - 1 - y) + x;
+				*lpSrc =unchValue ;
+			}
+		}	
+	}
 	delete pCTData;										// 释放内存
 	delete pCFData;										// 释放内存
 	pCTData = NULL;
