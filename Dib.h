@@ -47,7 +47,7 @@ public:
 	void Inverse();
 	void LoadFile(const char*);
 	void Draw(CDC *);
-	BOOL FFT(unsigned char*, long, long, int);
+	BOOL FFT(unsigned char*, long, long, int, BOOL);
 	void FFT_2D(complex<double> * , int, int , complex<double> * );
 	void FFT_1D(complex<double> * , complex<double> * , int);
 	void IFFT_2D(complex<double> * , complex<double> * , int, int);

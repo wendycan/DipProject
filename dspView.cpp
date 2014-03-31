@@ -32,8 +32,9 @@ BEGIN_MESSAGE_MAP(CDspView, CView)
 	ON_COMMAND(ID_FILE_NEW, OnFileNew)
 	ON_COMMAND(ID_NEW_RECTANGLE, OnNewRectangle)
 	ON_COMMAND(ID_FFT, OnFft)
-	ON_COMMAND(ID_NEW_CIRCLE, OnNewCircle)
 	ON_COMMAND(ID_FREQ, OnFreq)
+	ON_COMMAND(ID_NEW_CIRCLE, OnNewCircle)
+	ON_COMMAND(ID_FFTLOW, OnFftlow)
 	//}}AFX_MSG_MAP
 	// Standard printing commands
 	ON_COMMAND(ID_FILE_PRINT, CView::OnFilePrint)
@@ -233,12 +234,24 @@ void CDspView::OnFft()
 	CDspDoc* pDoc = GetDocument();
 	CRadius Radius;
 	Radius.DoModal();
-	pDoc->m_pDib->FFT(pDoc->m_pDib->m_pDibBits, pDoc->m_pDib->m_nWidth, pDoc->m_pDib->m_nHeight, Radius.m_radius);
+	pDoc->m_pDib->FFT(pDoc->m_pDib->m_pDibBits, pDoc->m_pDib->m_nWidth, pDoc->m_pDib->m_nHeight, Radius.m_radius, FALSE);
+	pDoc->UpdateAllViews(NULL);
 }
 
 void CDspView::OnFreq() 
 {
 	// TODO: Add your command handler code here
 	CDspDoc* pDoc = GetDocument();
-	pDoc->m_pDib->FFT(pDoc->m_pDib->m_pDibBits, pDoc->m_pDib->m_nWidth, pDoc->m_pDib->m_nHeight, FALSE);
+	pDoc->m_pDib->FFT(pDoc->m_pDib->m_pDibBits, pDoc->m_pDib->m_nWidth, pDoc->m_pDib->m_nHeight, FALSE, FALSE);
+	pDoc->UpdateAllViews(NULL);
+}
+
+void CDspView::OnFftlow() 
+{
+	// TODO: Add your command handler code here
+	CDspDoc* pDoc = GetDocument();
+	CRadius Radius;
+	Radius.DoModal();
+	pDoc->m_pDib->FFT(pDoc->m_pDib->m_pDibBits, pDoc->m_pDib->m_nWidth, pDoc->m_pDib->m_nHeight, Radius.m_radius, TRUE);//TRUE FOR LOWPASS
+	pDoc->UpdateAllViews(NULL);
 }

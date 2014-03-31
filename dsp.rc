@@ -185,8 +185,9 @@ BEGIN
     END
     POPUP "傅里叶"
     BEGIN
-        MENUITEM "傅里叶变换",                  ID_FFT
+        MENUITEM "傅里叶高通变换",              ID_FFT
         MENUITEM "频域",                        ID_FREQ
+        MENUITEM "傅里叶低通变换",              ID_FFTLOW
     END
 END
 
