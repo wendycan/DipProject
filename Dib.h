@@ -35,7 +35,7 @@ public:
 	long m_length;
 
 public:
-	void DrawCircle();
+	void DrawCircle(int);
 	void CreateDib();
 	void DrawRectangle();
 	void LaplaceEnhanced();

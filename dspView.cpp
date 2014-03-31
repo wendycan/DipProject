@@ -7,7 +7,7 @@
 #include "dspDoc.h"
 #include "dspView.h"
 #include "Dib.h"
-
+#include "Radius.h"
 #include "DlgHistogram.h"
 
 #ifdef _DEBUG
@@ -218,6 +218,8 @@ void CDspView::OnNewCircle()
 {
 	// TODO: Add your command handler code here
 	CDspDoc* pDoc = GetDocument();
-	pDoc->m_pDib->DrawCircle();
+	CRadius Radius;
+	Radius.DoModal();
+	pDoc->m_pDib->DrawCircle(Radius.m_radius);
 	pDoc->UpdateAllViews(NULL);
 }

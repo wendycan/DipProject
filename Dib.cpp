@@ -287,9 +287,9 @@ void CDib::DrawRectangle()
     }
 }
 
-void CDib::DrawCircle()
+void CDib::DrawCircle(int r)
 {
-	int x = 200, y = 200, r = 100;
+	int x = 200, y = 200;
 	for ( int i=0;i<512;i++)
     {
 		for( int j=0;j<512;j++)

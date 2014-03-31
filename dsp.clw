@@ -2,25 +2,27 @@
 
 [General Info]
 Version=1
-LastClass=CDspView
+LastClass=CRadius
 LastTemplate=CDialog
 NewFileInclude1=#include "stdafx.h"
 NewFileInclude2=#include "dsp.h"
 LastPage=0
 
-ClassCount=6
+ClassCount=7
 Class1=CDspApp
 Class2=CDspDoc
 Class3=CDspView
 Class4=CMainFrame
 
-ResourceCount=4
+ResourceCount=5
 Resource1=IDD_ABOUTBOX
 Resource2=IDR_DSPTYPE
 Class5=CChildFrame
 Class6=CAboutDlg
 Resource3=IDR_MAINFRAME
 Resource4=IDD_DLG_HISTOGRAM
+Class7=CRadius
+Resource5=IDD_DIALOG1
 
 [CLS:CDspApp]
 Type=0
@@ -42,7 +44,7 @@ ImplementationFile=dspView.cpp
 Filter=C
 BaseClass=CView
 VirtualFilter=VWC
-LastObject=ID_NEW_CIRCLE
+LastObject=CDspView
 
 
 [CLS:CMainFrame]
@@ -160,4 +162,21 @@ ControlCount=3
 Control1=IDOK,button,1342242817
 Control2=IDCANCEL,button,1342242816
 Control3=IDC_STATIC_HISTOGRAM,static,1342308352
+
+[DLG:IDD_DIALOG1]
+Type=1
+Class=CRadius
+ControlCount=3
+Control1=IDOK,button,1342242817
+Control2=IDCANCEL,button,1342242816
+Control3=IDC_EDIT1,edit,1350631552
+
+[CLS:CRadius]
+Type=0
+HeaderFile=Radius.h
+ImplementationFile=Radius.cpp
+BaseClass=CDialog
+Filter=D
+VirtualFilter=dWC
+LastObject=CRadius
 

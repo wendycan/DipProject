@@ -37,6 +37,7 @@ public:
 
 // Implementation
 public:
+	void OnNewCircle();
 	virtual ~CDspView();
 #ifdef _DEBUG
 	virtual void AssertValid() const;
@@ -56,7 +57,6 @@ protected:
 	afx_msg void OnLaplaceEnhanced();
 	afx_msg void OnFileNew();
 	afx_msg void OnNewRectangle();
-	afx_msg void OnNewCircle();
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };

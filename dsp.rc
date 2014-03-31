@@ -236,6 +236,16 @@ BEGIN
     LTEXT           "",IDC_STATIC_HISTOGRAM,50,27,249,141
 END
 
+IDD_DIALOG1 DIALOG DISCARDABLE  0, 0, 187, 94
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Dialog"
+FONT 10, "System"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,46,62,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,104,63,50,14
+    EDITTEXT        IDC_EDIT1,41,25,66,10,ES_AUTOHSCROLL
+END
+
 
 #ifndef _MAC
 /////////////////////////////////////////////////////////////////////////////
@@ -305,6 +315,14 @@ BEGIN
         RIGHTMARGIN, 361
         TOPMARGIN, 7
         BOTTOMMARGIN, 213
+    END
+
+    IDD_DIALOG1, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 180
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 87
     END
 END
 #endif    // APSTUDIO_INVOKED
