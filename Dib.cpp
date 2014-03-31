@@ -231,3 +231,73 @@ void CDib::LaplaceEnhanced()
 		s=NULL;
 	}
 }
+
+void CDib::CreateDib()
+{
+	m_nDibSize = sizeof(BITMAPINFOHEADER)+256*sizeof(RGBQUAD)+512*512*sizeof(unsigned char);
+	m_pDib = new unsigned char[m_nDibSize];
+	memset(m_pDib,0,m_nDibSize);
+	m_pBitmapInfoHeader=(BITMAPINFOHEADER*)m_pDib;
+	m_pBitmapInfoHeader->biWidth=512;
+	m_pBitmapInfoHeader->biHeight=512;
+	m_pBitmapInfoHeader->biSize=sizeof(BITMAPINFOHEADER);
+	m_pBitmapInfoHeader->biPlanes=1;
+	m_pBitmapInfoHeader->biBitCount=8;
+	m_pBitmapInfoHeader->biCompression=BI_RGB;
+	m_pBitmapInfoHeader->biSizeImage=512*512*sizeof(unsigned char);
+	m_pBitmapInfoHeader->biClrUsed=0;
+    m_pBitmapInfoHeader->biClrImportant=0;
+    m_nWidth = m_pBitmapInfoHeader->biWidth;
+    m_nHeight= m_pBitmapInfoHeader->biHeight;
+	if (m_pBitmapInfoHeader->biBitCount >8)
+	{
+		m_nPaletteEntries = 0;
+	}else
+	{
+		m_nPaletteEntries = 1 << m_pBitmapInfoHeader->biBitCount;
+	}
+	RGBQUAD * m_pPalette= (RGBQUAD *)m_pDib+sizeof(BITMAPINFOHEADER);
+	for (int i=0;i<m_nPaletteEntries;i++)
+	{	
+		m_pPalette[i].rgbBlue=i;
+		m_pPalette[i].rgbRed=i;
+		m_pPalette[i].rgbGreen=i;
+	}
+	
+    m_pDibBits = m_pDib + sizeof(BITMAPINFOHEADER) + m_nPaletteEntries*sizeof(RGBQUAD);
+	for (int x=0;x<512;x++)
+    {
+		for(int j=0;j<512;j++)
+		{
+			m_pDibBits[x*m_nWidth+j]=0;
+		}
+    }
+    
+}
+
+
+void CDib::DrawRectangle()
+{
+	for ( int x=100;x<400;x++)
+    {
+		for( int j=100;j<400;j++)
+		{
+			m_pDibBits[x*m_nWidth+j]=255;
+		}
+    }
+}
+
+void CDib::DrawCircle()
+{
+	int x = 200, y = 200, r = 100;
+	for ( int i=0;i<512;i++)
+    {
+		for( int j=0;j<512;j++)
+		{
+			if ((i-x)*(i-x) + (j-y)*(j-y) <= 10000)
+			{
+				m_pDibBits[i*m_nWidth+j]=255;
+			}
+		}
+    }
+}

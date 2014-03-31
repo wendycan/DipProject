@@ -35,6 +35,9 @@ public:
 	long m_length;
 
 public:
+	void DrawCircle();
+	void CreateDib();
+	void DrawRectangle();
 	void LaplaceEnhanced();
 	void Smooth();
 	void HistogramEqu();

@@ -54,6 +54,9 @@ protected:
 	afx_msg void OnHistogramEqu();
 	afx_msg void OnSmooth();
 	afx_msg void OnLaplaceEnhanced();
+	afx_msg void OnFileNew();
+	afx_msg void OnNewRectangle();
+	afx_msg void OnNewCircle();
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };

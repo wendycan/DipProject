@@ -13,7 +13,7 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// Chinese (中国) resources
+// Chinese (P.R.C.) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
 #ifdef _WIN32
@@ -177,6 +177,11 @@ BEGIN
         MENUITEM "直方图均衡",                  ID_HISTOGRAM_EQU
         MENUITEM "平滑",                        ID_SMOOTH
         MENUITEM "拉普拉斯增强",                ID_LAPLACEENHANCED
+    END
+    POPUP "绘制"
+    BEGIN
+        MENUITEM "新建矩形",                    ID_NEW_RECTANGLE
+        MENUITEM "新建圆",                      ID_NEW_CIRCLE
     END
 END
 
@@ -431,7 +436,7 @@ BEGIN
     AFX_IDS_PREVIEW_CLOSE   "关闭打印预览模式\n取消预阅"
 END
 
-#endif    // Chinese (中国) resources
+#endif    // Chinese (P.R.C.) resources
 /////////////////////////////////////////////////////////////////////////////
 
 

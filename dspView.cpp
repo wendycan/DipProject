@@ -29,6 +29,9 @@ BEGIN_MESSAGE_MAP(CDspView, CView)
 	ON_COMMAND(ID_HISTOGRAM_EQU, OnHistogramEqu)
 	ON_COMMAND(ID_SMOOTH, OnSmooth)
 	ON_COMMAND(ID_LAPLACEENHANCED, OnLaplaceEnhanced)
+	ON_COMMAND(ID_FILE_NEW, OnFileNew)
+	ON_COMMAND(ID_NEW_RECTANGLE, OnNewRectangle)
+	ON_COMMAND(ID_NEW_CIRCLE, OnNewCircle)
 	//}}AFX_MSG_MAP
 	// Standard printing commands
 	ON_COMMAND(ID_FILE_PRINT, CView::OnFilePrint)
@@ -184,5 +187,37 @@ void CDspView::OnLaplaceEnhanced()
 		return;
 	}
 	pDoc->m_pDib->LaplaceEnhanced();	
+	pDoc->UpdateAllViews(NULL);
+}
+
+void CDspView::OnFileNew() 
+{
+	// TODO: Add your command handler code here
+	CDspDoc* pDoc = GetDocument();
+	if (pDoc->m_pDib!=NULL)
+	{
+		delete pDoc->m_pDib;
+		pDoc->m_pDib=NULL;
+	}
+	pDoc->m_pDib= new CDib;
+	if (pDoc->m_pDib!=NULL){
+		pDoc->m_pDib->CreateDib();
+		pDoc->UpdateAllViews(NULL);
+	}
+}
+
+void CDspView::OnNewRectangle() 
+{
+	// TODO: Add your command handler code here
+	CDspDoc* pDoc = GetDocument();
+	pDoc->m_pDib->DrawRectangle();
+	pDoc->UpdateAllViews(NULL);
+}
+
+void CDspView::OnNewCircle() 
+{
+	// TODO: Add your command handler code here
+	CDspDoc* pDoc = GetDocument();
+	pDoc->m_pDib->DrawCircle();
 	pDoc->UpdateAllViews(NULL);
 }

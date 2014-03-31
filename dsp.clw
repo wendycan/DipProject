@@ -15,11 +15,11 @@ Class3=CDspView
 Class4=CMainFrame
 
 ResourceCount=4
-Resource1=IDR_DSPTYPE
-Resource2=IDR_MAINFRAME
+Resource1=IDD_ABOUTBOX
+Resource2=IDR_DSPTYPE
 Class5=CChildFrame
 Class6=CAboutDlg
-Resource3=IDD_ABOUTBOX
+Resource3=IDR_MAINFRAME
 Resource4=IDD_DLG_HISTOGRAM
 
 [CLS:CDspApp]
@@ -42,7 +42,7 @@ ImplementationFile=dspView.cpp
 Filter=C
 BaseClass=CView
 VirtualFilter=VWC
-LastObject=ID_LAPLACEENHANCED
+LastObject=ID_NEW_CIRCLE
 
 
 [CLS:CMainFrame]
@@ -130,7 +130,9 @@ Command24=ID_MENU_Histogram
 Command25=ID_HISTOGRAM_EQU
 Command26=ID_SMOOTH
 Command27=ID_LAPLACEENHANCED
-CommandCount=27
+Command28=ID_NEW_RECTANGLE
+Command29=ID_NEW_CIRCLE
+CommandCount=29
 
 [ACL:IDR_MAINFRAME]
 Type=1
