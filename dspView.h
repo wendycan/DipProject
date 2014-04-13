@@ -60,6 +60,8 @@ protected:
 	afx_msg void OnFft();
 	afx_msg void OnFreq();
 	afx_msg void OnFftlow();
+	afx_msg void OnGlpf();
+	afx_msg void OnGhpf();
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };

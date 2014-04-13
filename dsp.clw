@@ -15,12 +15,12 @@ Class3=CDspView
 Class4=CMainFrame
 
 ResourceCount=5
-Resource1=IDR_DSPTYPE
-Resource2=IDD_ABOUTBOX
+Resource1=IDR_MAINFRAME
+Resource2=IDD_DLG_HISTOGRAM
 Class5=CChildFrame
 Class6=CAboutDlg
-Resource3=IDD_DLG_HISTOGRAM
-Resource4=IDR_MAINFRAME
+Resource3=IDR_DSPTYPE
+Resource4=IDD_ABOUTBOX
 Class7=CRadius
 Resource5=IDD_DIALOG1
 
@@ -44,7 +44,7 @@ ImplementationFile=dspView.cpp
 Filter=C
 BaseClass=CView
 VirtualFilter=VWC
-LastObject=ID_FFTLOW
+LastObject=CDspView
 
 
 [CLS:CMainFrame]
@@ -125,19 +125,20 @@ Command17=ID_WINDOW_NEW
 Command18=ID_WINDOW_CASCADE
 Command19=ID_WINDOW_TILE_HORZ
 Command20=ID_WINDOW_ARRANGE
-Command21=ID_APP_ABOUT
-Command22=ID_FANBAI
-Command23=ID_REMOVERED
-Command24=ID_MENU_Histogram
-Command25=ID_HISTOGRAM_EQU
-Command26=ID_SMOOTH
-Command27=ID_LAPLACEENHANCED
-Command28=ID_NEW_RECTANGLE
-Command29=ID_NEW_CIRCLE
+Command21=ID_FANBAI
+Command22=ID_REMOVERED
+Command23=ID_MENU_Histogram
+Command24=ID_HISTOGRAM_EQU
+Command25=ID_SMOOTH
+Command26=ID_LAPLACEENHANCED
+Command27=ID_NEW_RECTANGLE
+Command28=ID_NEW_CIRCLE
+Command29=ID_FREQ
 Command30=ID_FFT
-Command31=ID_FREQ
-Command32=ID_FFTLOW
-CommandCount=32
+Command31=ID_FFTLOW
+Command32=ID_GLPF
+Command33=ID_GHPF
+CommandCount=33
 
 [ACL:IDR_MAINFRAME]
 Type=1

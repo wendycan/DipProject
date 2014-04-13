@@ -23,6 +23,7 @@ CDib::CDib()
 	m_pDibBits=NULL;
     pRawData=NULL;
 	m_pGrayScale = NULL;
+	e = 2.71828182845904523536;
 
 }
 
@@ -301,6 +302,7 @@ void CDib::DrawCircle(int r)
 		}
     }
 }
+
 BOOL CDib::FFT(unsigned char* pDIBBits, long nWidth, long nHeight, int m_nRadius, BOOL low)
 { 
 	unsigned char*	lpSrc;							// 指向源图像的指针
@@ -367,18 +369,19 @@ BOOL CDib::FFT(unsigned char* pDIBBits, long nWidth, long nHeight, int m_nRadius
 		}	
 	}
 
-	else{
-		//	lowpass filter	
+	else{	
 		for (int k=0;k<nTransHeight;k++)
 		{
 			for (int l=0;l<nTransWidth;l++)
 			{
 				double Rtemp = (1.0*k- nTransHeight/2.0)*(1.0*k- nTransHeight/2.0) + ( 1.0*l-nTransWidth/2.0)*( 1.0*l-nTransWidth/2.0);
 				Rtemp = sqrt(Rtemp);
+				// 高通滤波
 				if ((low == FALSE) && (Rtemp <= m_nRadius))
 				{
 					pCFData[k*nTransWidth + l] =complex<double>(0,0);
 				}
+				// 低通滤波
 				else if((low == TRUE) && (Rtemp >= m_nRadius)){
 					pCFData[k*nTransWidth + l] =complex<double>(0,0);
 				}
@@ -761,4 +764,103 @@ void CDib::IFFT_2D(complex<double> * pCFData, complex<double> * pCTData, int nWi
 	}
 	delete pCWork ;
 	pCWork = NULL ;
+}
+
+BOOL CDib::Gaussian(unsigned char* pDIBBits, long nWidth, long nHeight, int m_nRadius, BOOL low)
+{
+	unsigned char*	lpSrc;							// 指向源图像的指针
+	int y ;										// 循环控制变量
+	int x ;										// 循环控制变量
+	double dTmpOne ;								//存放临时变量
+	double dTmpTwo ;								//存放临时变量
+	int nTransWidth ;								// 傅立叶变换的宽度（2的整数次幂）
+	int nTransHeight;								// 傅立叶变换的高度（2的整数次幂）
+	double unchValue;								// 存贮图像各像素灰度的临时变量
+	complex<double> * pCTData ;						// 指向时域数据的指针
+	complex<double> * pCFData ;						// 指向频域数据的指针
+	// 计算进行傅立叶变换的点数－横向	（2的整数次幂）
+	dTmpOne = log(nWidth)/log(2);
+	dTmpTwo = ceil(dTmpOne)	;
+	dTmpTwo = pow(2,dTmpTwo);
+	nTransWidth = (int) dTmpTwo;	
+	// 计算进行傅立叶变换的点数－纵向 （2的整数次幂）
+	dTmpOne = log(nHeight)/log(2);
+	dTmpTwo = ceil(dTmpOne)	;
+	dTmpTwo = pow(2,dTmpTwo);
+	nTransHeight = (int) dTmpTwo;
+	double dReal;									// 傅立叶变换的实部
+	double dImag;									// 傅立叶变换的虚部
+	
+	pCTData=new complex<double>[nTransWidth * nTransHeight];	// 分配内存
+	pCFData=new complex<double>[nTransWidth * nTransHeight];	// 分配内存
+	// 图像数据的宽和高不一定是2的整数次幂，所以pCTData有一部分数据需要补0
+	for(y=0; y<nTransHeight; y++)
+	{
+		for(x=0; x<nTransWidth; x++)
+		{
+			pCTData[y*nTransWidth + x]=complex<double>(0,0);		// 补零
+		}
+	}
+	//把图像数据传给pCTData
+	for(y=0; y<nHeight; y++)
+	{
+		for(x=0; x<nWidth; x++)
+		{
+			// 指向DIB第y行，第x个象素的指针
+			lpSrc = (unsigned char*)pDIBBits + nWidth * (nHeight - 1 - y) + x;
+			unchValue = (*lpSrc)*pow(-1,x+y);
+			pCTData[y*nTransWidth + x]=complex<double>(unchValue,0);
+		}
+	}
+	FFT_2D(pCTData, nWidth, nHeight, pCFData) ;					// 傅立叶正变换
+
+	for (int k=0;k<nTransHeight;k++)
+	{
+		for (int l=0;l<nTransWidth;l++)
+		{
+			double Rtemp = (1.0*k- nTransHeight/2.0)*(1.0*k- nTransHeight/2.0) + ( 1.0*l-nTransWidth/2.0)*( 1.0*l-nTransWidth/2.0);
+			Rtemp = sqrt(Rtemp);
+			int D0 = 10; //截止频率
+			// 高通滤波
+			if (low == FALSE){
+				if (Rtemp <= m_nRadius)
+				{
+					pCFData[k*nTransWidth + l] =complex<double>(0,0);
+				} else {
+					pCFData[k*nTransWidth + l] *= pow(e, -Rtemp*Rtemp/(2*D0*D0));
+				}
+			}
+			// 低通滤波
+			else if(low == TRUE){
+				if (Rtemp >= m_nRadius)
+				{
+					pCFData[k*nTransWidth + l] =complex<double>(0,0);
+				} else {
+					pCFData[k*nTransWidth + l] *= pow(e, -Rtemp*Rtemp/(2*D0*D0));
+				}
+			}
+		}
+	}
+		
+	IFFT_2D(pCFData, pCTData,nHeight, nWidth); 				// 图象进行反变换
+		
+	for(y=0; y<nHeight; y++)								// 反变换的数据传给lpDIBBits
+	{
+		for(x=0; x<nWidth; x++)
+		{
+			//需要考虑信号的正负问题以及实际所用的图象数据是灰度值还是原始数据
+			dReal = pCTData[y*nTransWidth + x].real() ;		// 实部
+			dImag = pCTData[y*nTransWidth + x].imag() ;		// 虚部
+			unchValue = dReal*pow(-1,x+y);
+			// 指向DIB第y行，第x个象素的指针
+			lpSrc = (unsigned char*)pDIBBits + nWidth * (nHeight - 1 - y) + x;
+			*lpSrc =unchValue ;
+		}
+	}	
+	
+	delete pCTData;										// 释放内存
+	delete pCFData;										// 释放内存
+	pCTData = NULL;
+	pCFData = NULL;	
+	return (true);										//返回结果
 }

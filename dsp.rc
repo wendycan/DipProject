@@ -13,7 +13,7 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// Chinese (P.R.C.) resources
+// Chinese (中国) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
 #ifdef _WIN32
@@ -165,11 +165,7 @@ BEGIN
         MENUITEM "平铺(&T)",                    ID_WINDOW_TILE_HORZ
         MENUITEM "排列图标(&A)",                ID_WINDOW_ARRANGE
     END
-    POPUP "帮助(&H)"
-    BEGIN
-        MENUITEM "关于 dsp(&A)...",             ID_APP_ABOUT
-    END
-    POPUP "图像操作"
+    POPUP "基本操作"
     BEGIN
         MENUITEM "反白",                        ID_FANBAI
         MENUITEM "去红",                        ID_REMOVERED
@@ -185,9 +181,14 @@ BEGIN
     END
     POPUP "傅里叶"
     BEGIN
-        MENUITEM "傅里叶高通变换",              ID_FFT
         MENUITEM "频域",                        ID_FREQ
-        MENUITEM "傅里叶低通变换",              ID_FFTLOW
+        MENUITEM "高通滤波",                    ID_FFT
+        MENUITEM "低通滤波",                    ID_FFTLOW
+    END
+    POPUP "高斯"
+    BEGIN
+        MENUITEM "低通滤波",                    ID_GLPF
+        MENUITEM "高通滤波",                    ID_GHPF
     END
 END
 
@@ -460,7 +461,7 @@ BEGIN
     AFX_IDS_PREVIEW_CLOSE   "关闭打印预览模式\n取消预阅"
 END
 
-#endif    // Chinese (P.R.C.) resources
+#endif    // Chinese (中国) resources
 /////////////////////////////////////////////////////////////////////////////
 
 
