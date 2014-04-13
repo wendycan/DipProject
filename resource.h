@@ -22,6 +22,8 @@
 #define ID_FFTLOW                       32781
 #define ID_GLPF                         32782
 #define ID_GHPF                         32783
+#define ID_BLPF                         32784
+#define ID_BHPF                         32785
 
 // Next default values for new objects
 // 
@@ -29,7 +31,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
 #define _APS_NEXT_RESOURCE_VALUE        132
-#define _APS_NEXT_COMMAND_VALUE         32784
+#define _APS_NEXT_COMMAND_VALUE         32786
 #define _APS_NEXT_CONTROL_VALUE         1002
 #define _APS_NEXT_SYMED_VALUE           101
 #endif

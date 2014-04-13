@@ -35,8 +35,10 @@ BEGIN_MESSAGE_MAP(CDspView, CView)
 	ON_COMMAND(ID_FREQ, OnFreq)
 	ON_COMMAND(ID_FFTLOW, OnFftlow)
 	ON_COMMAND(ID_GLPF, OnGlpf)
-	ON_COMMAND(ID_NEW_CIRCLE, OnNewCircle)
 	ON_COMMAND(ID_GHPF, OnGhpf)
+	ON_COMMAND(ID_BLPF, OnBlpf)
+	ON_COMMAND(ID_NEW_CIRCLE, OnNewCircle)
+	ON_COMMAND(ID_BHPF, OnBhpf)
 	//}}AFX_MSG_MAP
 	// Standard printing commands
 	ON_COMMAND(ID_FILE_PRINT, CView::OnFilePrint)
@@ -276,5 +278,26 @@ void CDspView::OnGhpf()
 	CRadius Radius;
 	Radius.DoModal();
 	pDoc->m_pDib->Gaussian(pDoc->m_pDib->m_pDibBits, pDoc->m_pDib->m_nWidth, pDoc->m_pDib->m_nHeight, Radius.m_radius, FALSE);
+	pDoc->UpdateAllViews(NULL);	
+}
+
+void CDspView::OnBlpf() 
+{
+	// TODO: Add your command handler code here
+	CDspDoc* pDoc = GetDocument();
+	CRadius Radius;
+	Radius.DoModal();
+	pDoc->m_pDib->Butterworth(pDoc->m_pDib->m_pDibBits, pDoc->m_pDib->m_nWidth, pDoc->m_pDib->m_nHeight, Radius.m_radius, TRUE);//TRUE FOR LOWPASS
+	pDoc->UpdateAllViews(NULL);
+	
+}
+
+void CDspView::OnBhpf() 
+{
+	// TODO: Add your command handler code here
+	CDspDoc* pDoc = GetDocument();
+	CRadius Radius;
+	Radius.DoModal();
+	pDoc->m_pDib->Butterworth(pDoc->m_pDib->m_pDibBits, pDoc->m_pDib->m_nWidth, pDoc->m_pDib->m_nHeight, Radius.m_radius, FALSE);
 	pDoc->UpdateAllViews(NULL);	
 }

@@ -54,6 +54,7 @@ public:
 	void IFFT_2D(complex<double> * , complex<double> * , int, int);
 	void IFFT_1D(complex<double> *, complex<double> *, int);
 	BOOL Gaussian(unsigned char*, long, long, int, BOOL);
+	BOOL Butterworth(unsigned char*, long, long, int, BOOL);
 };
 
 

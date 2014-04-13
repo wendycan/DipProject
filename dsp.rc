@@ -182,13 +182,18 @@ BEGIN
     POPUP "傅里叶"
     BEGIN
         MENUITEM "频域",                        ID_FREQ
-        MENUITEM "高通滤波",                    ID_FFT
         MENUITEM "低通滤波",                    ID_FFTLOW
+        MENUITEM "高通滤波",                    ID_FFT
     END
     POPUP "高斯"
     BEGIN
         MENUITEM "低通滤波",                    ID_GLPF
         MENUITEM "高通滤波",                    ID_GHPF
+    END
+    POPUP "巴特沃斯"
+    BEGIN
+        MENUITEM "低通滤波",                    ID_BLPF
+        MENUITEM "高通滤波",                    ID_BHPF
     END
 END
 
