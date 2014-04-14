@@ -32,7 +32,7 @@ CDspDoc::CDspDoc()
 {
 	// TODO: add one-time construction code here
 	m_pDib=NULL;
-
+	m_pDibbuffer = NULL;
 }
 
 CDspDoc::~CDspDoc()
@@ -70,8 +70,7 @@ BOOL CDspDoc::OnOpenDocument(LPCTSTR lpszPathName)
 	if (m_pDib!=NULL)
 	{
 		m_pDib->LoadFile(lpszPathName);
-
-	//	m_pDib->chuang();
+		m_pDibbuffer = new CDib(* m_pDib);
 
 		UpdateAllViews(NULL);
 	}

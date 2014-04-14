@@ -11,6 +11,7 @@ using namespace std;
 #endif // _MSC_VER > 1000
 #define Pi 3.14159265
 #define Max_Units 1000
+#define WIDTHBYTES(i)((i+31)/32*4) //²¹ÉÏ4µÄ±¶Êý
 
 const int SmothKernel[9]={1,1,1,1,1,1,1,1,1};
 const int LaplacianKernel[9]={-1,-1,-1,-1,9,-1,-1,-1,-1};
@@ -19,6 +20,7 @@ class CDib
 {
 public:
 	CDib();
+	CDib(CDib &);
 	virtual ~CDib();
 
 public:
@@ -35,6 +37,7 @@ public:
 	long m_length;
 
 public:
+	long m_nWidthBytes;
 	double e;
 	void DrawCircle(int);
 	void CreateDib();

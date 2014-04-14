@@ -13,7 +13,7 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// Chinese (中国) resources
+// Chinese (P.R.C.) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
 #ifdef _WIN32
@@ -195,6 +195,8 @@ BEGIN
         MENUITEM "低通滤波",                    ID_BLPF
         MENUITEM "高通滤波",                    ID_BHPF
     END
+    MENUITEM "变形",                        65535
+    MENUITEM "",                            65535
 END
 
 
@@ -466,7 +468,7 @@ BEGIN
     AFX_IDS_PREVIEW_CLOSE   "关闭打印预览模式\n取消预阅"
 END
 
-#endif    // Chinese (中国) resources
+#endif    // Chinese (P.R.C.) resources
 /////////////////////////////////////////////////////////////////////////////
 
 
