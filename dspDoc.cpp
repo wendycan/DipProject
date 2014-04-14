@@ -70,8 +70,6 @@ BOOL CDspDoc::OnOpenDocument(LPCTSTR lpszPathName)
 	if (m_pDib!=NULL)
 	{
 		m_pDib->LoadFile(lpszPathName);
-		m_pDibbuffer = new CDib(* m_pDib);
-
 		UpdateAllViews(NULL);
 	}
 

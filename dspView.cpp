@@ -37,8 +37,9 @@ BEGIN_MESSAGE_MAP(CDspView, CView)
 	ON_COMMAND(ID_GLPF, OnGlpf)
 	ON_COMMAND(ID_GHPF, OnGhpf)
 	ON_COMMAND(ID_BLPF, OnBlpf)
-	ON_COMMAND(ID_NEW_CIRCLE, OnNewCircle)
 	ON_COMMAND(ID_BHPF, OnBhpf)
+	ON_COMMAND(ID_NEW_CIRCLE, OnNewCircle)
+	ON_COMMAND(ID_Ampliy, OnAmpliy)
 	//}}AFX_MSG_MAP
 	// Standard printing commands
 	ON_COMMAND(ID_FILE_PRINT, CView::OnFilePrint)
@@ -300,4 +301,12 @@ void CDspView::OnBhpf()
 	Radius.DoModal();
 	pDoc->m_pDib->Butterworth(pDoc->m_pDib->m_pDibBits, pDoc->m_pDib->m_nWidth, pDoc->m_pDib->m_nHeight, Radius.m_radius, FALSE);
 	pDoc->UpdateAllViews(NULL);	
+}
+
+void CDspView::OnAmpliy() 
+{
+	// TODO: Add your command handler code here
+	CDspDoc* pDoc = GetDocument();
+	pDoc->m_pDib->Ampliy();
+	pDoc->UpdateAllViews(NULL);
 }

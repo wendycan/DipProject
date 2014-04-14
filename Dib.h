@@ -30,13 +30,17 @@ public:
 	BITMAPINFOHEADER * m_pBitmapInfoHeader;
 	PALETTEENTRY *m_pPaletteEntry;
 	unsigned char* m_pDibBits;
+	unsigned char* m_pDibBits_static;
 	long m_nWidth;
 	long m_nHeight;
+	long old_width;
+	long old_Height;
 	long m_nPaletteEntries;
 	long m_nDibSize;
 	long m_length;
 
 public:
+	void Ampliy();
 	long m_nWidthBytes;
 	double e;
 	void DrawCircle(int);
@@ -51,6 +55,7 @@ public:
 	void Inverse();
 	void LoadFile(const char*);
 	void Draw(CDC *);
+	long CDib::GetNearPosition(float, float);
 	BOOL FFT(unsigned char*, long, long, int, BOOL);
 	void FFT_2D(complex<double> * , int, int , complex<double> *);
 	void FFT_1D(complex<double> * , complex<double> * , int);

@@ -64,6 +64,7 @@ protected:
 	afx_msg void OnGhpf();
 	afx_msg void OnBlpf();
 	afx_msg void OnBhpf();
+	afx_msg void OnAmpliy();
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };

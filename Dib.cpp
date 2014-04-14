@@ -94,6 +94,8 @@ void CDib::LoadFile( const char* pFileName)
 	m_nWidth = m_pBitmapInfoHeader->biWidth;
 	m_nHeight = m_pBitmapInfoHeader->biHeight;
 	m_length = m_nWidth * m_nHeight;
+	old_Height = m_nHeight;
+	old_width = m_nWidth;
 	long hi = sizeof(BITMAPINFOHEADER);
 	m_pPaletteEntry = (PALETTEENTRY *)(m_pDib+sizeof(BITMAPINFOHEADER));
 	if (m_pBitmapInfoHeader->biBitCount>8)
@@ -102,10 +104,13 @@ void CDib::LoadFile( const char* pFileName)
 		m_length *= (m_pBitmapInfoHeader->biBitCount)/8;  //To calculate bmp size by multiply by bitcount
 	}else
 	{
-	m_nPaletteEntries = 1<<m_pBitmapInfoHeader->biBitCount;
-
+		m_nPaletteEntries = 1<<m_pBitmapInfoHeader->biBitCount;
 	}
 	m_pDibBits = m_pDib + sizeof(BITMAPINFOHEADER) + m_nPaletteEntries*sizeof(RGBQUAD);
+
+	m_pDibBits_static = new unsigned char[m_nWidth*m_nHeight];
+	memset(m_pDibBits_static, 0, m_nWidth*m_nHeight);
+	memcpy(m_pDibBits_static, m_pDibBits, m_nWidth*m_nHeight);
 }
 
 
@@ -991,4 +996,48 @@ BOOL CDib::Butterworth(unsigned char* pDIBBits, long nWidth, long nHeight, int m
 	return (true);										//·µ»Ø½á¹û
 }
 
+void CDib::Ampliy()
+{
+	long level = 2;
+	int nTransWidth = level * m_nWidth;							
+	int nTransHeight = level * m_nHeight;
+	m_nWidthBytes = WIDTHBYTES(nTransWidth*m_pBitmapInfoHeader->biBitCount);
+	unsigned char *tempBits = new unsigned char[nTransHeight*m_nWidthBytes];
+	for (int k=0;k<nTransHeight;k++)
+	{
+		for (int l=0;l<nTransWidth;l++)
+		{
+			tempBits[k*m_nWidthBytes + l] = m_pDibBits_static[GetNearPosition(k/2.0, l/2.0)];
+		}
+	}
+	delete []m_pDibBits;
+	m_pDibBits = tempBits;
+	m_nHeight = nTransHeight;
+	m_nWidth = m_nWidthBytes;
+}
 
+long CDib::GetNearPosition(float x, float y)
+{
+	long xn = ceil(x);
+	long yn = ceil(y);
+	long xmin, ymin;
+	long distance = 10000;
+	for (int i = 0; i++; i<2)
+	{
+		for(int j = 0; j++; j<2){
+			if((xn - i)*(xn - i) + (yn - j)*(yn - j) < distance){
+				xmin = x;
+				ymin = y;
+			}
+		}
+	}
+	x = xn -1;
+	y = yn;
+	distance = (xn - x)*(xn - x) + (yn - y)*(yn - y);
+
+	if (xmin > m_nWidth || ymin > m_nHeight)
+	{
+		return (0);
+	}
+	return (yn * m_nWidth + xn);
+}

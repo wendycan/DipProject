@@ -195,8 +195,11 @@ BEGIN
         MENUITEM "低通滤波",                    ID_BLPF
         MENUITEM "高通滤波",                    ID_BHPF
     END
-    MENUITEM "变形",                        65535
     MENUITEM "",                            65535
+    POPUP "变形"
+    BEGIN
+        MENUITEM "放大",                        ID_Ampliy
+    END
 END
 
 
