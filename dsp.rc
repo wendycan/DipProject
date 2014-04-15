@@ -13,7 +13,7 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// Chinese (P.R.C.) resources
+// Chinese (中国) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
 #ifdef _WIN32
@@ -198,7 +198,8 @@ BEGIN
     MENUITEM "",                            65535
     POPUP "变形"
     BEGIN
-        MENUITEM "放大",                        ID_Ampliy
+        MENUITEM "放大",                        ID_ZOOMIN
+        MENUITEM "缩小",                        ID_ZOOMOUT
     END
 END
 
@@ -471,7 +472,7 @@ BEGIN
     AFX_IDS_PREVIEW_CLOSE   "关闭打印预览模式\n取消预阅"
 END
 
-#endif    // Chinese (P.R.C.) resources
+#endif    // Chinese (中国) resources
 /////////////////////////////////////////////////////////////////////////////
 
 

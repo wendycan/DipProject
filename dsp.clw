@@ -15,11 +15,11 @@ Class3=CDspView
 Class4=CMainFrame
 
 ResourceCount=5
-Resource1=IDR_DSPTYPE
-Resource2=IDD_ABOUTBOX
+Resource1=IDD_ABOUTBOX
+Resource2=IDR_MAINFRAME
 Class5=CChildFrame
 Class6=CAboutDlg
-Resource3=IDR_MAINFRAME
+Resource3=IDR_DSPTYPE
 Resource4=IDD_DLG_HISTOGRAM
 Class7=CRadius
 Resource5=IDD_DIALOG1
@@ -44,7 +44,7 @@ ImplementationFile=dspView.cpp
 Filter=C
 BaseClass=CView
 VirtualFilter=VWC
-LastObject=ID_Ampliy
+LastObject=ID_ZOOMIN
 
 
 [CLS:CMainFrame]
@@ -140,8 +140,9 @@ Command32=ID_GLPF
 Command33=ID_GHPF
 Command34=ID_BLPF
 Command35=ID_BHPF
-Command36=ID_Ampliy
-CommandCount=36
+Command36=ID_ZOOMIN
+Command37=ID_ZOOMOUT
+CommandCount=37
 
 [ACL:IDR_MAINFRAME]
 Type=1

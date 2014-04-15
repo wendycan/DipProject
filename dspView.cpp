@@ -38,8 +38,10 @@ BEGIN_MESSAGE_MAP(CDspView, CView)
 	ON_COMMAND(ID_GHPF, OnGhpf)
 	ON_COMMAND(ID_BLPF, OnBlpf)
 	ON_COMMAND(ID_BHPF, OnBhpf)
+	ON_WM_KEYUP()
+	ON_COMMAND(ID_ZOOMOUT, OnZoomout)
 	ON_COMMAND(ID_NEW_CIRCLE, OnNewCircle)
-	ON_COMMAND(ID_Ampliy, OnAmpliy)
+	ON_COMMAND(ID_ZOOMIN, OnZoomin)
 	//}}AFX_MSG_MAP
 	// Standard printing commands
 	ON_COMMAND(ID_FILE_PRINT, CView::OnFilePrint)
@@ -302,11 +304,35 @@ void CDspView::OnBhpf()
 	pDoc->m_pDib->Butterworth(pDoc->m_pDib->m_pDibBits, pDoc->m_pDib->m_nWidth, pDoc->m_pDib->m_nHeight, Radius.m_radius, FALSE);
 	pDoc->UpdateAllViews(NULL);	
 }
+void CDspView::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags) 
+{
+	// TODO: Add your message handler code here and/or call default
+	CDspDoc* pDoc = GetDocument();
 
-void CDspView::OnAmpliy() 
+	if (nChar == 187) // to Zoom In 
+	{
+		pDoc->m_pDib->ChangeSize(TRUE);	
+	} else if (nChar == 189) // to Zoom Out
+	{
+		pDoc->m_pDib->ChangeSize(FALSE);
+	}
+
+	pDoc->UpdateAllViews(NULL);
+	CView::OnKeyUp(nChar, nRepCnt, nFlags);
+}
+
+void CDspView::OnZoomout() 
 {
 	// TODO: Add your command handler code here
 	CDspDoc* pDoc = GetDocument();
-	pDoc->m_pDib->Ampliy();
+	pDoc->m_pDib->ChangeSize(FALSE);
+	pDoc->UpdateAllViews(NULL);
+}
+
+void CDspView::OnZoomin() 
+{
+	// TODO: Add your command handler code here
+	CDspDoc* pDoc = GetDocument();
+	pDoc->m_pDib->ChangeSize(TRUE);
 	pDoc->UpdateAllViews(NULL);
 }

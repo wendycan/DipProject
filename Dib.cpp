@@ -23,6 +23,7 @@ CDib::CDib()
 	m_pDibBits=NULL;
     pRawData=NULL;
 	m_pGrayScale = NULL;
+	level = 1;
 	e = 2.71828182845904523536;
 
 }
@@ -94,7 +95,7 @@ void CDib::LoadFile( const char* pFileName)
 	m_nWidth = m_pBitmapInfoHeader->biWidth;
 	m_nHeight = m_pBitmapInfoHeader->biHeight;
 	m_length = m_nWidth * m_nHeight;
-	old_Height = m_nHeight;
+	old_height = m_nHeight;
 	old_width = m_nWidth;
 	long hi = sizeof(BITMAPINFOHEADER);
 	m_pPaletteEntry = (PALETTEENTRY *)(m_pDib+sizeof(BITMAPINFOHEADER));
@@ -996,18 +997,23 @@ BOOL CDib::Butterworth(unsigned char* pDIBBits, long nWidth, long nHeight, int m
 	return (true);										//·µ»Ø½á¹û
 }
 
-void CDib::Ampliy()
+void CDib::ChangeSize(BOOL ZoomIn)
 {
-	long level = 2;
-	int nTransWidth = level * m_nWidth;							
-	int nTransHeight = level * m_nHeight;
+	if (ZoomIn)
+	{
+		level *= 1.1;  //set zoom in level
+	} else {
+		level *= 0.9;  //set zoom out level
+	}
+	int nTransWidth = level * old_width;							
+	int nTransHeight = level * old_height;
 	m_nWidthBytes = WIDTHBYTES(nTransWidth*m_pBitmapInfoHeader->biBitCount);
 	unsigned char *tempBits = new unsigned char[nTransHeight*m_nWidthBytes];
 	for (int k=0;k<nTransHeight;k++)
 	{
 		for (int l=0;l<nTransWidth;l++)
 		{
-			tempBits[k*m_nWidthBytes + l] = m_pDibBits_static[GetNearPosition(l/2.0, k/2.0)];
+			tempBits[k*m_nWidthBytes + l] = m_pDibBits_static[GetNearPosition(l/level, k/level)];
 		}
 	}
 //	delete[] m_pDibBits;
@@ -1020,26 +1026,25 @@ void CDib::Ampliy()
 
 long CDib::GetNearPosition(float x, float y)
 {
-	long xn = ceil(x);
-	long yn = ceil(y);
+	long xn = floor(x);
+	long yn = floor(y);
 	long xmin, ymin;
 	long distance = 10000;
-	for (int i = 0; i++; i<2)
+	for (int i = 0; i<2; i++)
 	{
-		for(int j = 0; j++; j<2){
-			if((xn - i)*(xn - i) + (yn - j)*(yn - j) < distance){
+		for(int j = 0; j<2; j++){
+			xn = xn + i;
+			yn = yn + j;
+			if((x - xn)*(y - yn) + (x - xn)*(y - yn) < distance){
 				xmin = x;
 				ymin = y;
+				distance = (x - xn)*(y - yn) + (x - xn)*(y - yn);
 			}
 		}
 	}
-	x = xn -1;
-	y = yn;
-	distance = (xn - x)*(xn - x) + (yn - y)*(yn - y);
-
-	if (xmin > m_nWidth || ymin > m_nHeight)
+	if (xmin > old_width || ymin > old_height)
 	{
 		return (0);
 	}
-	return (yn * m_nWidth + xn);
+	return (ymin * old_width + xmin);
 }

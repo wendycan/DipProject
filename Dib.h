@@ -34,13 +34,14 @@ public:
 	long m_nWidth;
 	long m_nHeight;
 	long old_width;
-	long old_Height;
+	long old_height;
 	long m_nPaletteEntries;
 	long m_nDibSize;
 	long m_length;
 
 public:
-	void Ampliy();
+	float level;
+	void ChangeSize(BOOL);
 	long m_nWidthBytes;
 	double e;
 	void DrawCircle(int);
