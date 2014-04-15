@@ -90,7 +90,7 @@ BOOL CDspApp::InitInstance()
 	// Parse command line for standard shell commands, DDE, file open
 	CCommandLineInfo cmdInfo;
 	ParseCommandLine(cmdInfo);
-
+	cmdInfo.m_nShellCommand = CCommandLineInfo::FileNothing;
 	// Dispatch commands specified on the command line
 	if (!ProcessShellCommand(cmdInfo))
 		return FALSE;

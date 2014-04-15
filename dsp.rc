@@ -88,16 +88,16 @@ BEGIN
     BUTTON      ID_FILE_OPEN
     BUTTON      ID_FILE_SAVE
     SEPARATOR
+    BUTTON      ID_TOOL_ZOOM_IN
+    BUTTON      ID_TOOL_ZOOM_OUT
+    BUTTON      ID_TOOL_ROTATE_RIGHT
+    BUTTON      ID_TOOL_ROTATE_LEFT
+    SEPARATOR
     BUTTON      ID_EDIT_CUT
     BUTTON      ID_EDIT_COPY
     BUTTON      ID_EDIT_PASTE
     SEPARATOR
     BUTTON      ID_FILE_PRINT
-    SEPARATOR
-    BUTTON      ID_TOOL_ZOOM_IN
-    BUTTON      ID_TOOL_ZOOM_OUT
-    BUTTON      ID_TOOL_ROTATE_RIGHT
-    BUTTON      ID_TOOL_ROTATE_LEFT
 END
 
 
@@ -199,11 +199,6 @@ BEGIN
         MENUITEM "高通滤波",                    ID_BHPF
     END
     MENUITEM "",                            65535
-    POPUP "变形"
-    BEGIN
-        MENUITEM "放大",                        ID_ZOOMIN
-        MENUITEM "缩小",                        ID_ZOOMOUT
-    END
 END
 
 

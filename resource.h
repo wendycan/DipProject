@@ -25,8 +25,6 @@
 #define ID_BLPF                         32784
 #define ID_BHPF                         32785
 #define ID_Ampliy                       32786
-#define ID_ZOOMIN                       32786
-#define ID_ZOOMOUT                      32787
 #define ID_TOOL_ZOOM_IN                 32789
 #define ID_TOOL_ZOOM_OUT                32790
 #define ID_TOOL_ROTATE_RIGHT            32796

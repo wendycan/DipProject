@@ -15,14 +15,14 @@ Class3=CDspView
 Class4=CMainFrame
 
 ResourceCount=5
-Resource1=IDD_DLG_HISTOGRAM
-Resource2=IDD_ABOUTBOX
+Resource1=IDD_ABOUTBOX
+Resource2=IDR_DSPTYPE
 Class5=CChildFrame
 Class6=CAboutDlg
-Resource3=IDR_MAINFRAME
-Resource4=IDR_DSPTYPE
+Resource3=IDD_DLG_HISTOGRAM
+Resource4=IDD_DIALOG1
 Class7=CRadius
-Resource5=IDD_DIALOG1
+Resource5=IDR_MAINFRAME
 
 [CLS:CDspApp]
 Type=0
@@ -96,14 +96,14 @@ Class=CMainFrame
 Command1=ID_FILE_NEW
 Command2=ID_FILE_OPEN
 Command3=ID_FILE_SAVE
-Command4=ID_EDIT_CUT
-Command5=ID_EDIT_COPY
-Command6=ID_EDIT_PASTE
-Command7=ID_FILE_PRINT
-Command8=ID_TOOL_ZOOM_IN
-Command9=ID_TOOL_ZOOM_OUT
-Command10=ID_TOOL_ROTATE_RIGHT
-Command11=ID_TOOL_ROTATE_LEFT
+Command4=ID_TOOL_ZOOM_IN
+Command5=ID_TOOL_ZOOM_OUT
+Command6=ID_TOOL_ROTATE_RIGHT
+Command7=ID_TOOL_ROTATE_LEFT
+Command8=ID_EDIT_CUT
+Command9=ID_EDIT_COPY
+Command10=ID_EDIT_PASTE
+Command11=ID_FILE_PRINT
 CommandCount=11
 
 [MNU:IDR_DSPTYPE]
@@ -144,9 +144,7 @@ Command32=ID_GLPF
 Command33=ID_GHPF
 Command34=ID_BLPF
 Command35=ID_BHPF
-Command36=ID_ZOOMIN
-Command37=ID_ZOOMOUT
-CommandCount=37
+CommandCount=35
 
 [ACL:IDR_MAINFRAME]
 Type=1
