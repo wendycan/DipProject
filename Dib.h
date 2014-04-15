@@ -9,9 +9,10 @@ using namespace std;
 #if _MSC_VER > 1000
 #pragma once
 #endif // _MSC_VER > 1000
-#define Pi 3.14159265
+#define PI 3.14159265
 #define Max_Units 1000
 #define WIDTHBYTES(i)((i+31)/32*4) //²¹ÉÏ4µÄ±¶Êý
+#define RADIAN(angle) ((angle)*PI/180.0) 
 
 const int SmothKernel[9]={1,1,1,1,1,1,1,1,1};
 const int LaplacianKernel[9]={-1,-1,-1,-1,9,-1,-1,-1,-1};
@@ -39,6 +40,7 @@ public:
 	long m_length;
 
 public:
+	int deg;
 	void Rotate(BOOL);
 	double level;
 	void ChangeSize(BOOL);

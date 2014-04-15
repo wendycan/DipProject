@@ -20,9 +20,9 @@ Resource2=IDR_DSPTYPE
 Class5=CChildFrame
 Class6=CAboutDlg
 Resource3=IDD_DLG_HISTOGRAM
-Resource4=IDD_DIALOG1
+Resource4=IDR_MAINFRAME
 Class7=CRadius
-Resource5=IDR_MAINFRAME
+Resource5=IDD_DIALOG1
 
 [CLS:CDspApp]
 Type=0

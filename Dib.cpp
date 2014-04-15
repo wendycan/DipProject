@@ -25,7 +25,7 @@ CDib::CDib()
 	m_pGrayScale = NULL;
 	level = 1;
 	e = 2.71828182845904523536;
-
+	deg = 0;
 }
 CDib::~CDib()
 {	if (m_pDib!=NULL)
@@ -462,7 +462,7 @@ void CDib::FFT_1D(complex<double> * pCTData, complex<double> * pCFData, int nLev
     // 计算傅立叶变换的系数
 	for(i = 0; i < nCount / 2; i++)
 	{
-		dAngle = -2 * Pi * i / nCount;
+		dAngle = -2 * PI * i / nCount;
 		pCW[i] = complex<double> ( cos(dAngle), sin(dAngle) );
 	}
 
@@ -1029,9 +1029,72 @@ long CDib::GetNearPosition(float x, float y)
 
 void CDib::Rotate(BOOL left)
 {
+	int nTransWidth = level * old_width;							
+	int nTransHeight = level * old_height;
+	// 旋转角度（弧度）
+	float	fRotateAngle;
+	// 旋转角度的正弦和余弦
+	float	fSina, fCosa;
+	// 源图四个角的坐标（以图像中心为坐标系原点）
+	float	fSrcX1,fSrcY1,fSrcX2,fSrcY2,fSrcX3,fSrcY3,fSrcX4,fSrcY4;	
+	// 旋转后四个角的坐标（以图像中心为坐标系原点）
+	float	fDstX1,fDstY1,fDstX2,fDstY2,fDstX3,fDstY3,fDstX4,fDstY4;
+	fRotateAngle = (float) RADIAN(deg);
+	
 	if (left == TRUE) //逆时针旋转
 	{
+		deg -= 15;
 	} else {  //顺时针旋转
-
+		deg += 15;
 	}
+	// 计算旋转角度的正弦
+	fSina = (float) sin((double)fRotateAngle);
+	
+	// 计算旋转角度的余弦
+	fCosa = (float) cos((double)fRotateAngle);
+	// 计算原图的四个角的坐标（以图像中心为坐标系原点）
+	fSrcX1 = 0;
+	fSrcY1 = 0;
+	fSrcX2 = 0;
+	fSrcY2 = m_nHeight;
+	fSrcX3 = m_nWidth;
+	fSrcY3 = m_nHeight;
+	fSrcX4 = m_nWidth;
+	fSrcY4 = 0;
+	
+	// 计算新图四个角的坐标（以图像中心为坐标系原点）
+	fDstX1 =  fCosa * fSrcX1 - fSina * fSrcY1;
+	fDstY1 =  fSina * fSrcX1 + fCosa * fSrcY1;
+	fDstX2 =  fCosa * fSrcX2 - fSina * fSrcY2;
+	fDstY2 =  fSina * fSrcX2 + fCosa * fSrcY2;
+	fDstX3 =  fCosa * fSrcX3 - fSina * fSrcY3;
+	fDstY3 =  fSina * fSrcX3 + fCosa * fSrcY3;
+	fDstX4 =  fCosa * fSrcX4 - fSina * fSrcY4;
+	fDstY4 =  fSina * fSrcX4 + fCosa * fSrcY4;
+	
+	nTransWidth = max(abs(fDstX1 - fDstX3), abs(fDstX2 - fDstX4));
+	nTransHeight = max(abs(fDstY1 - fDstY3), abs(fDstY2 - fDstY4));
+
+	m_nWidthBytes = WIDTHBYTES(nTransWidth*m_pBitmapInfoHeader->biBitCount);
+	unsigned char *tempBits = new unsigned char[nTransHeight*m_nWidthBytes];
+	int x0, y0, length;
+	for (int k=0;k<nTransHeight;k++)
+	{
+		for (int l=0;l<nTransWidth;l++)
+		{
+			x0 = (LONG) ((-(float) k) * fSina + ((float) l) * fCosa);
+			y0 = (LONG) ( ((float) k) * fCosa + ((float) l) * fSina);
+			if ((y0*old_width + x0 > old_width*old_height) || (y0*old_width + x0 < 0))
+			{
+				tempBits[k*m_nWidthBytes + l] = 255;
+			} else {
+				tempBits[k*m_nWidthBytes + l] = m_pDibBits_static[y0*old_width + x0];
+			}
+		}
+	}
+	m_pDibBits = tempBits;
+	m_nHeight = nTransHeight;
+	m_nWidth = m_nWidthBytes;
+	m_pBitmapInfoHeader->biWidth=m_nWidthBytes;
+	m_pBitmapInfoHeader->biHeight=nTransHeight;
 }
