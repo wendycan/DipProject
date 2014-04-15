@@ -1007,13 +1007,15 @@ void CDib::Ampliy()
 	{
 		for (int l=0;l<nTransWidth;l++)
 		{
-			tempBits[k*m_nWidthBytes + l] = m_pDibBits_static[GetNearPosition(k/2.0, l/2.0)];
+			tempBits[k*m_nWidthBytes + l] = m_pDibBits_static[GetNearPosition(l/2.0, k/2.0)];
 		}
 	}
-	delete []m_pDibBits;
+//	delete[] m_pDibBits;
 	m_pDibBits = tempBits;
 	m_nHeight = nTransHeight;
 	m_nWidth = m_nWidthBytes;
+	m_pBitmapInfoHeader->biWidth=m_nWidthBytes;
+	m_pBitmapInfoHeader->biHeight=nTransHeight;
 }
 
 long CDib::GetNearPosition(float x, float y)
