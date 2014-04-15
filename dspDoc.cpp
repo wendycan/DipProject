@@ -32,7 +32,6 @@ CDspDoc::CDspDoc()
 {
 	// TODO: add one-time construction code here
 	m_pDib=NULL;
-	m_pDibbuffer = NULL;
 }
 
 CDspDoc::~CDspDoc()

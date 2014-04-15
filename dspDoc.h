@@ -50,7 +50,6 @@ protected:
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 public:
-	CDib * m_pDibbuffer;
 	CDib * m_pDib;
 };
 

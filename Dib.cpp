@@ -27,33 +27,6 @@ CDib::CDib()
 	e = 2.71828182845904523536;
 
 }
-CDib::CDib(CDib & Dib)
-{
-	CDib *pDib = &Dib;
-	if (pDib == NULL)
-	{
-		return;
-	}
-	m_nDibSize = pDib->m_nDibSize;
-	m_pDibData = new unsigned char[pDib->m_nDibSize];
-	memset(m_pDibData,0,m_nDibSize);
-	memcpy(m_pDibData,pDib->m_pDibData,m_nDibSize);
-	m_pBitmapInfoHeader = (BITMAPINFOHEADER *)m_pDibData;
-	m_nWidth = m_pBitmapInfoHeader->biWidth;
-	m_nHeight = m_pBitmapInfoHeader->biHeight;
-	if (m_pBitmapInfoHeader->biBitCount>8)
-	{
-		m_nPaletteEntries = 0;
-	}else
-	{
-		m_nPaletteEntries = 1<<m_pBitmapInfoHeader->biBitCount;
-	}
-	m_pPaletteEntry = (PALETTEENTRY *)(m_pDib+sizeof(BITMAPINFOHEADER));
-	m_pDibBits = m_pDib + sizeof(BITMAPINFOHEADER) + m_nPaletteEntries*sizeof(RGBQUAD);
-	m_nWidthBytes = WIDTHBYTES(m_nWidth*m_pBitmapInfoHeader->biBitCount);
-
-	m_pGrayScale = NULL;
-}
 CDib::~CDib()
 {	if (m_pDib!=NULL)
 	{	
@@ -1016,7 +989,7 @@ void CDib::ChangeSize(BOOL ZoomIn)
 			tempBits[k*m_nWidthBytes + l] = m_pDibBits_static[GetNearPosition(l/level, k/level)];
 		}
 	}
-//	delete[] m_pDibBits;
+//	delete[] m_pDibBits;   //?
 	m_pDibBits = tempBits;
 	m_nHeight = nTransHeight;
 	m_nWidth = m_nWidthBytes;

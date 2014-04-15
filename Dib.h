@@ -20,7 +20,6 @@ class CDib
 {
 public:
 	CDib();
-	CDib(CDib &);
 	virtual ~CDib();
 
 public:
