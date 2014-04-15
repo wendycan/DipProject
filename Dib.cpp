@@ -24,7 +24,6 @@ CDib::CDib()
     pRawData=NULL;
 	m_pGrayScale = NULL;
 	level = 1;
-	e = 2.71828182845904523536;
 	deg = 0;
 }
 CDib::~CDib()
@@ -300,7 +299,7 @@ void CDib::DrawCircle(int r)
     {
 		for( int j=0;j<512;j++)
 		{
-			if ((i-x)*(i-x) + (j-y)*(j-y) <= 10000)
+			if ((i-x)*(i-x) + (j-y)*(j-y) <= r*r)
 			{
 				m_pDibBits[i*m_nWidth+j]=255;
 			}
@@ -832,7 +831,7 @@ BOOL CDib::Gaussian(unsigned char* pDIBBits, long nWidth, long nHeight, int m_nR
 				{
 					pCFData[k*nTransWidth + l] =complex<double>(0,0);
 				} else {
-					pCFData[k*nTransWidth + l] *= pow(e, -Rtemp*Rtemp/(2*D0*D0));
+					pCFData[k*nTransWidth + l] *= exp(-Rtemp*Rtemp/(2*D0*D0));
 				}
 			}
 			// 低通滤波
@@ -841,7 +840,7 @@ BOOL CDib::Gaussian(unsigned char* pDIBBits, long nWidth, long nHeight, int m_nR
 				{
 					pCFData[k*nTransWidth + l] =complex<double>(0,0);
 				} else {
-					pCFData[k*nTransWidth + l] *= pow(e, -Rtemp*Rtemp/(2*D0*D0));
+					pCFData[k*nTransWidth + l] *= exp(-Rtemp*Rtemp/(2*D0*D0));
 				}
 			}
 		}
@@ -1043,9 +1042,9 @@ void CDib::Rotate(BOOL left)
 	
 	if (left == TRUE) //逆时针旋转
 	{
-		deg -= 15;
-	} else {  //顺时针旋转
 		deg += 15;
+	} else {  //顺时针旋转
+		deg -= 15;
 	}
 	// 计算旋转角度的正弦
 	fSina = (float) sin((double)fRotateAngle);

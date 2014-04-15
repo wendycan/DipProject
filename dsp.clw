@@ -15,12 +15,12 @@ Class3=CDspView
 Class4=CMainFrame
 
 ResourceCount=5
-Resource1=IDD_ABOUTBOX
+Resource1=IDD_DLG_HISTOGRAM
 Resource2=IDR_DSPTYPE
 Class5=CChildFrame
 Class6=CAboutDlg
-Resource3=IDD_DLG_HISTOGRAM
-Resource4=IDR_MAINFRAME
+Resource3=IDR_MAINFRAME
+Resource4=IDD_ABOUTBOX
 Class7=CRadius
 Resource5=IDD_DIALOG1
 

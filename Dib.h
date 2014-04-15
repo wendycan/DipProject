@@ -45,7 +45,6 @@ public:
 	double level;
 	void ChangeSize(BOOL);
 	long m_nWidthBytes;
-	double e;
 	void DrawCircle(int);
 	void CreateDib();
 	void DrawRectangle();
