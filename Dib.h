@@ -39,7 +39,8 @@ public:
 	long m_length;
 
 public:
-	float level;
+	void Rotate(BOOL);
+	double level;
 	void ChangeSize(BOOL);
 	long m_nWidthBytes;
 	double e;

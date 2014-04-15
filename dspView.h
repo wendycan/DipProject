@@ -66,8 +66,10 @@ protected:
 	afx_msg void OnBhpf();
 	afx_msg void OnAmpliy();
 	afx_msg void OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags);
-	afx_msg void OnZoomout();
-	afx_msg void OnZoomin();
+	afx_msg void OnZoomOut();
+	afx_msg void OnZoomIn();
+	afx_msg void OnRotateLeft();
+	afx_msg void OnRotateRight();
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };

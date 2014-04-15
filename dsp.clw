@@ -15,12 +15,12 @@ Class3=CDspView
 Class4=CMainFrame
 
 ResourceCount=5
-Resource1=IDD_ABOUTBOX
-Resource2=IDR_DSPTYPE
+Resource1=IDD_DLG_HISTOGRAM
+Resource2=IDD_ABOUTBOX
 Class5=CChildFrame
 Class6=CAboutDlg
 Resource3=IDR_MAINFRAME
-Resource4=IDD_DLG_HISTOGRAM
+Resource4=IDR_DSPTYPE
 Class7=CRadius
 Resource5=IDD_DIALOG1
 
@@ -44,7 +44,7 @@ ImplementationFile=dspView.cpp
 Filter=C
 BaseClass=CView
 VirtualFilter=VWC
-LastObject=ID_ZOOMIN
+LastObject=ID_TOOL_ROTATE_RIGHT
 
 
 [CLS:CMainFrame]
@@ -52,6 +52,7 @@ Type=0
 HeaderFile=MainFrm.h
 ImplementationFile=MainFrm.cpp
 Filter=T
+LastObject=ID_TOOL_ZOOM_OUT
 
 
 [CLS:CChildFrame]
@@ -99,8 +100,11 @@ Command4=ID_EDIT_CUT
 Command5=ID_EDIT_COPY
 Command6=ID_EDIT_PASTE
 Command7=ID_FILE_PRINT
-Command8=ID_APP_ABOUT
-CommandCount=8
+Command8=ID_TOOL_ZOOM_IN
+Command9=ID_TOOL_ZOOM_OUT
+Command10=ID_TOOL_ROTATE_RIGHT
+Command11=ID_TOOL_ROTATE_LEFT
+CommandCount=11
 
 [MNU:IDR_DSPTYPE]
 Type=1

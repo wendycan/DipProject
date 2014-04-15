@@ -972,6 +972,11 @@ BOOL CDib::Butterworth(unsigned char* pDIBBits, long nWidth, long nHeight, int m
 
 void CDib::ChangeSize(BOOL ZoomIn)
 {
+//	if(m_pDib == NULL )
+//	{
+//		AfxMessageBox("No object is opened",MB_OK);
+//		return;   	
+//	}     //no effect
 	if (ZoomIn)
 	{
 		level *= 1.1;  //set zoom in level
@@ -1020,4 +1025,13 @@ long CDib::GetNearPosition(float x, float y)
 		return (0);
 	}
 	return (ymin * old_width + xmin);
+}
+
+void CDib::Rotate(BOOL left)
+{
+	if (left == TRUE) //逆时针旋转
+	{
+	} else {  //顺时针旋转
+
+	}
 }

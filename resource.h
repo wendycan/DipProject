@@ -27,6 +27,10 @@
 #define ID_Ampliy                       32786
 #define ID_ZOOMIN                       32786
 #define ID_ZOOMOUT                      32787
+#define ID_TOOL_ZOOM_IN                 32789
+#define ID_TOOL_ZOOM_OUT                32790
+#define ID_TOOL_ROTATE_RIGHT            32796
+#define ID_TOOL_ROTATE_LEFT             32800
 
 // Next default values for new objects
 // 
@@ -34,7 +38,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
 #define _APS_NEXT_RESOURCE_VALUE        132
-#define _APS_NEXT_COMMAND_VALUE         32788
+#define _APS_NEXT_COMMAND_VALUE         32801
 #define _APS_NEXT_CONTROL_VALUE         1002
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
