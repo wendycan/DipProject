@@ -1100,11 +1100,11 @@ void CDib::Rotate(BOOL left)
 
 void CDib::MedianFilter()
 {
-	for (int i=0;i<old_height;i++)
+	for (int i=0;i<m_nHeight;i++)
 	{
-		for (int j=0;i<old_width;i++)
+		for (int j=0;j<m_nWidth;j++)
 		{
-			m_pDibBits[i*old_width +j] = GetMedianValue(j,i);
+			m_pDibBits[i*m_nWidth +j] = GetMedianValue(j,i);
 		}
 	}
 }
@@ -1117,7 +1117,7 @@ long CDib::GetMedianValue(int x, int y)
 	{
 		for (j=-1;j<2;j++)
 		{
-			grayValue[k] = m_pDibBits[x+i, y+j];
+			grayValue[k++] = m_pDibBits[(y+j)*m_nWidth+x+i];
 		}
 	}
 	for (i=0;i<9;i++)
