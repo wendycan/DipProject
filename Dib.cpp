@@ -1148,12 +1148,12 @@ long* CDib::NearBitsSort(int x, int y)
 	{
 		for (j=-1;j<2;j++)
 		{
-			grayValue[k++] = m_pDibBits[(y+j)*m_nWidth+x+i];
+			grayValue[k++] = m_pDibBits_static[(y+j)*m_nWidth+x+i];
 		}
 	}
 	for (i=0;i<9;i++)
 	{
-		for (j=i+1;j<9;j++)
+		for (j=0;j<9;j++)
 		{
 			long temp;
 			if (grayValue[j] > grayValue[j+1])
