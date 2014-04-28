@@ -40,6 +40,10 @@ public:
 	long m_length;
 
 public:
+	long GetAlphaFixed(int,int,int);
+	long* NearBitsSort(int, int);
+	void AlphaFilter();
+	void AdaptivelocalFilter();
 	long GetMedianValue(int, int);
 	void MedianFilter();
 	int deg;

@@ -1111,8 +1111,30 @@ void CDib::MedianFilter()
 
 long CDib::GetMedianValue(int x, int y)
 {
+	long * result = NearBitsSort(x,y);
+	return result[4];
+}
+
+void CDib::AdaptivelocalFilter()
+{
+
+}
+
+void CDib::AlphaFilter()
+{
+	for (int i=0;i<m_nHeight;i++)
+	{
+		for (int j=0;j<m_nWidth;j++)
+		{
+			m_pDibBits[i*m_nWidth +j] = GetAlphaFixed(j,i,2);
+		}
+	}
+}
+
+long* CDib::NearBitsSort(int x, int y)
+{
+	int i,j,k=0;
 	long grayValue[9];
-	int k = 0,i,j;
 	for (i=-1;i<2;i++)
 	{
 		for (j=-1;j<2;j++)
@@ -1133,5 +1155,20 @@ long CDib::GetMedianValue(int x, int y)
 			}
 		}
 	}
-	return grayValue[4];
+	return grayValue;
+}
+
+long CDib::GetAlphaFixed(int x, int y, int d)
+{
+	long * grayValue = NearBitsSort(x,y);
+	int length = 9-d;
+	long result[7];
+	long sum = 0;
+	for (int k=0;k<9-d;k++)
+	{
+		result[k] = grayValue[k+d/2];
+		sum += result[k];
+	}
+	long value = sum/length;
+	return value;
 }

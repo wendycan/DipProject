@@ -369,11 +369,18 @@ void CDspView::OnMedianfilter()
 void CDspView::OnAdaptivelocalFilter() 
 {
 	// TODO: Add your command handler code here
-	
+	CDspDoc* pDoc = GetDocument();
+	pDoc->m_pDib->AdaptivelocalFilter();
+	pDoc->UpdateAllViews(NULL);
 }
 
 void CDspView::OnAlphafilter() 
 {
 	// TODO: Add your command handler code here
-	
+	CDspDoc* pDoc = GetDocument();
+	pDoc->m_pDib->AlphaFilter();
+	pDoc->UpdateAllViews(NULL);
 }
+
+
+
