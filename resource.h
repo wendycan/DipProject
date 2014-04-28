@@ -29,6 +29,9 @@
 #define ID_TOOL_ZOOM_OUT                32790
 #define ID_TOOL_ROTATE_RIGHT            32796
 #define ID_TOOL_ROTATE_LEFT             32800
+#define ID_MEDIANFILTER                 32801
+#define ID_ADAPTIVELOCAL                32802
+#define ID_ALPHAFILTER                  32803
 
 // Next default values for new objects
 // 
@@ -36,7 +39,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
 #define _APS_NEXT_RESOURCE_VALUE        132
-#define _APS_NEXT_COMMAND_VALUE         32801
+#define _APS_NEXT_COMMAND_VALUE         32804
 #define _APS_NEXT_CONTROL_VALUE         1002
 #define _APS_NEXT_SYMED_VALUE           101
 #endif

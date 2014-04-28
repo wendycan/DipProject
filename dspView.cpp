@@ -39,11 +39,14 @@ BEGIN_MESSAGE_MAP(CDspView, CView)
 	ON_COMMAND(ID_BLPF, OnBlpf)
 	ON_COMMAND(ID_BHPF, OnBhpf)
 	ON_WM_KEYUP()
-	ON_COMMAND(ID_NEW_CIRCLE, OnNewCircle)
-	ON_COMMAND(ID_TOOL_ZOOM_IN, OnZoomIn)
 	ON_COMMAND(ID_TOOL_ZOOM_OUT, OnZoomOut)
+	ON_COMMAND(ID_TOOL_ZOOM_IN, OnZoomIn)
 	ON_COMMAND(ID_TOOL_ROTATE_LEFT, OnRotateLeft)
 	ON_COMMAND(ID_TOOL_ROTATE_RIGHT, OnRotateRight)
+	ON_COMMAND(ID_MEDIANFILTER, OnMedianfilter)
+	ON_COMMAND(ID_ADAPTIVELOCAL, OnAdaptivelocalFilter)
+	ON_COMMAND(ID_NEW_CIRCLE, OnNewCircle)
+	ON_COMMAND(ID_ALPHAFILTER, OnAlphafilter)
 	//}}AFX_MSG_MAP
 	// Standard printing commands
 	ON_COMMAND(ID_FILE_PRINT, CView::OnFilePrint)
@@ -353,4 +356,24 @@ void CDspView::OnRotateRight()
 	CDspDoc* pDoc = GetDocument();
 	pDoc->m_pDib->Rotate(FALSE);
 	pDoc->UpdateAllViews(NULL);
+}
+
+void CDspView::OnMedianfilter() 
+{
+	// TODO: Add your command handler code here
+	CDspDoc* pDoc = GetDocument();
+	pDoc->m_pDib->MedianFilter();
+	pDoc->UpdateAllViews(NULL);
+}
+
+void CDspView::OnAdaptivelocalFilter() 
+{
+	// TODO: Add your command handler code here
+	
+}
+
+void CDspView::OnAlphafilter() 
+{
+	// TODO: Add your command handler code here
+	
 }

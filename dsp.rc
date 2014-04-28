@@ -13,7 +13,7 @@
 #undef APSTUDIO_READONLY_SYMBOLS
 
 /////////////////////////////////////////////////////////////////////////////
-// Chinese (中国) resources
+// Chinese (P.R.C.) resources
 
 #if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
 #ifdef _WIN32
@@ -199,6 +199,12 @@ BEGIN
         MENUITEM "高通滤波",                    ID_BHPF
     END
     MENUITEM "",                            65535
+    POPUP "去噪"
+    BEGIN
+        MENUITEM "中值",                        ID_MEDIANFILTER
+        MENUITEM "自适应局部",                  ID_ADAPTIVELOCAL
+        MENUITEM "阿尔法均值",                  ID_ALPHAFILTER
+    END
 END
 
 
@@ -470,7 +476,7 @@ BEGIN
     AFX_IDS_PREVIEW_CLOSE   "关闭打印预览模式\n取消预阅"
 END
 
-#endif    // Chinese (中国) resources
+#endif    // Chinese (P.R.C.) resources
 /////////////////////////////////////////////////////////////////////////////
 
 

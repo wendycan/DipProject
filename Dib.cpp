@@ -1076,7 +1076,7 @@ void CDib::Rotate(BOOL left)
 
 	m_nWidthBytes = WIDTHBYTES(nTransWidth*m_pBitmapInfoHeader->biBitCount);
 	unsigned char *tempBits = new unsigned char[nTransHeight*m_nWidthBytes];
-	int x0, y0, length;
+	int x0, y0;
 	for (int k=0;k<nTransHeight;k++)
 	{
 		for (int l=0;l<nTransWidth;l++)
@@ -1096,4 +1096,42 @@ void CDib::Rotate(BOOL left)
 	m_nWidth = m_nWidthBytes;
 	m_pBitmapInfoHeader->biWidth=m_nWidthBytes;
 	m_pBitmapInfoHeader->biHeight=nTransHeight;
+}
+
+void CDib::MedianFilter()
+{
+	for (int i=0;i<old_height;i++)
+	{
+		for (int j=0;i<old_width;i++)
+		{
+			m_pDibBits[i*old_width +j] = GetMedianValue(j,i);
+		}
+	}
+}
+
+long CDib::GetMedianValue(int x, int y)
+{
+	long grayValue[9];
+	int k = 0,i,j;
+	for (i=-1;i<2;i++)
+	{
+		for (j=-1;j<2;j++)
+		{
+			grayValue[k] = m_pDibBits[x+i, y+j];
+		}
+	}
+	for (i=0;i<9;i++)
+	{
+		for (j=i+1;j<9;j++)
+		{
+			long temp;
+			if (grayValue[j] > grayValue[j+1])
+			{
+				temp = grayValue[j];
+				grayValue[j] = grayValue[j+1];
+				grayValue[j+1] = temp;
+			}
+		}
+	}
+	return grayValue[4];
 }

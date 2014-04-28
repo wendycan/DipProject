@@ -70,6 +70,9 @@ protected:
 	afx_msg void OnZoomIn();
 	afx_msg void OnRotateLeft();
 	afx_msg void OnRotateRight();
+	afx_msg void OnMedianfilter();
+	afx_msg void OnAdaptivelocalFilter();
+	afx_msg void OnAlphafilter();
 	//}}AFX_MSG
 	DECLARE_MESSAGE_MAP()
 };

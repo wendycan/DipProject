@@ -40,6 +40,8 @@ public:
 	long m_length;
 
 public:
+	long GetMedianValue(int, int);
+	void MedianFilter();
 	int deg;
 	void Rotate(BOOL);
 	double level;
