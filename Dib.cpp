@@ -1117,6 +1117,15 @@ long CDib::GetMedianValue(int x, int y)
 
 void CDib::AdaptivelocalFilter()
 {
+	long globalVar = 400;
+	int i,j;
+	for (i=0;i<m_nHeight;i++)
+	{
+		for (j=0;j<m_nWidth;j++)
+		{
+			m_pDibBits[i*m_nWidth + j] = GetAdaptivelocalValue(j,i,globalVar);
+		}
+	}
 
 }
 
@@ -1170,5 +1179,25 @@ long CDib::GetAlphaFixed(int x, int y, int d)
 		sum += result[k];
 	}
 	long value = sum/length;
+	return value;
+}
+
+long CDib::GetAdaptivelocalValue(int x, int y, long globalVar)
+{
+	long * nearBits = NearBitsSort(x,y);
+	long median = nearBits[4];
+	long localVar,localSum = 0, localVarSquSum = 0,localMean;
+	int k;
+	for (k=0;k<9;k++)
+	{
+		localSum += nearBits[k];
+	}
+	localMean = localSum/9;
+	for (k=0;k<9;k++)
+	{
+		localVarSquSum += (nearBits[k] - localMean) * (nearBits[k] - localMean);
+	}
+	localVar = localVarSquSum/9;
+	long value = m_pDibBits[y*m_nWidth + x] - (globalVar/localVar)*(m_pDibBits[y*m_nWidth + x] - median);
 	return value;
 }

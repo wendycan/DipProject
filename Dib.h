@@ -40,6 +40,7 @@ public:
 	long m_length;
 
 public:
+	long GetAdaptivelocalValue(int,int,long);
 	long GetAlphaFixed(int,int,int);
 	long* NearBitsSort(int, int);
 	void AlphaFilter();
